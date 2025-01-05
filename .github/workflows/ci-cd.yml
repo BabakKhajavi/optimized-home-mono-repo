@@ -52,5 +52,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-east-1'
           S3_BUCKET: 'optimized-closets-portal'
+          REACT_APP_ROOT_URL: ${{ secrets.REACT_APP_ROOT_URL}}
         run: |
           aws s3 sync ./apps/dashboard/dist s3://$S3_BUCKET --delete
