@@ -17,6 +17,14 @@
     },
     "types": ["node", "express"]
   },
-  "include": ["**/*.ts"],
+  "include": [
+    "**/*.ts",
+    "../../packages/common/src/theme.d.ts",
+    "../../packages/common/src/declarations.d.ts"
+  ],
+  "files": [
+    "../../packages/common/src/theme.d.ts",
+    "../../packages/common/src/declarations.d.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }

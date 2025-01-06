@@ -21,7 +21,8 @@
     "start:atoms": "yarn workspace @packages/atoms run watch",
     "start:molecules": "yarn workspace @packages/molecules run watch",
     "start:organisms": "yarn workspace @packages/organisms run watch",
-    "start:service": "yarn workspace @closet/service start:development",
+    "build:service": "yarn workspace @closet/service build",
+    "dev:service": "yarn workspace @closet/service dev",
     "build:dashboard": "yarn workspace @closet/dashboard build",
     "dev:dashboard": "concurrently \"yarn run start:service\" \"yarn run start:common\" \"yarn run start:atoms\" \"yarn run start:molecules\" \"yarn run start:organisms\" \"yarn workspace @closet/dashboard start\"",
     "start:dashboard": "yarn run start:service & yarn workspace @closet/dashboard serve",
@@ -94,7 +95,8 @@
     "ts-node": "^10.9.2",
     "typescript": "5.0.2",
     "vite": "^6.0.6",
-    "vite-plugin-compression": "^0.5.1"
+    "vite-plugin-compression": "^0.5.1",
+    "zip-cli": "^0.0.0"
   },
   "resolutions": {
     "axios": "1.4.0",

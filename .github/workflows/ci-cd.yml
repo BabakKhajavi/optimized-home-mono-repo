@@ -46,7 +46,7 @@ jobs:
       - name: Build Dashboard App
         run: yarn build:dashboard
 
-      - name: Deploy to S3 ${{ secrets.S3_BUCKET}}
+      - name: Deploy to S3
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -55,3 +55,30 @@ jobs:
           REACT_APP_ROOT_URL: ${{ secrets.REACT_APP_ROOT_URL}}
         run: |
           aws s3 sync ./apps/dashboard/dist s3://$S3_BUCKET --delete
+
+  deploy-service:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build project
+        run: yarn build:service
+
+      - name: Deploy to S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'us-east-1'
+          S3_BUCKET_SERVICE: ${{ secrets.S3_BUCKET}}
+          REACT_APP_ROOT_URL: ${{ secrets.REACT_APP_ROOT_URL}}
+        run: |
+          aws s3 sync ./apps/service/dist s3://$S3_BUCKET_SERVICE --delete

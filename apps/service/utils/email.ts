@@ -6,7 +6,7 @@ import sgMail, { MailDataRequired } from '@sendgrid/mail';
 
 export const sendRequestAutoReplyEmail: (
   to: string | Array<string>,
-  data: Object
+  data: Object,
 ) => void = (to, data) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY ?? '');
   const msg = {
@@ -29,7 +29,7 @@ export const sendRequestAutoReplyEmail: (
 };
 export const sendRequestAlarmEmail: (
   to: string | Array<string>,
-  data: Object
+  data: Object,
 ) => void = (to, data) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY ?? '');
   const msg = {
