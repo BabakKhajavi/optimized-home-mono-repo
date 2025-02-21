@@ -6,7 +6,6 @@ WORKDIR /app
 COPY package.json ./
 
 # Copy the shared libraries and root yarn.lock file
-COPY ../../yarn.lock ./
 
 # Install dependencies
 RUN yarn install --frozen-lockfile
