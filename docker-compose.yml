@@ -1,8 +1,7 @@
-# docker-compose.yml (if needed for future use)
 version: '3'
 services:
-  express-app:
-    image: your-docker-registry/express-app:latest
+  service-app:
+    image: ${{ secrets.DOCKER_USERNAME }}/service-app:latest
     ports:
       - '3000:3000'
     environment:
