@@ -10,7 +10,7 @@ export const sequelize = new Sequelize(
     dialect: 'mysql',
     host: environment.host,
     logging: environment.loggingDatabase,
-  }
+  },
 );
 
 export const connectToDatabase = async () => {
@@ -19,7 +19,7 @@ export const connectToDatabase = async () => {
     console.log('Connection has been established successfully.');
 
     initializeModels(sequelize);
-    await sequelize.sync({ alter: true });
+    await sequelize.sync({ force: true });
     console.log('Database synchronized successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);

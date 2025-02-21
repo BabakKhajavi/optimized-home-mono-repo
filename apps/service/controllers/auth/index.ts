@@ -27,25 +27,23 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
-router
-  .route('/users')
-  .post(
-    authValidators.registerValidator,
-    validateRequest,
-    async (req: Request, res: Response, next: NextFunction) => {
-      try {
-        const userPayload = { ...req.body } as IUser;
-        const encryptedPassword = await encrypt(userPayload.password, 12);
-        userPayload.password = encryptedPassword;
-        const user = await Auth.create(userPayload);
-        res.status(SuccessStatusCode.CREATED).send(user);
-      } catch (error) {
-        next(error);
-      }
+router.route('/users').post(
+  // authValidators.registerValidator,
+  // validateRequest,
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const userPayload = { ...req.body } as IUser;
+      const encryptedPassword = await encrypt(userPayload.password, 12);
+      userPayload.password = encryptedPassword;
+      const user = await Auth.create(userPayload);
+      res.status(SuccessStatusCode.CREATED).send(user);
+    } catch (error) {
+      next(error);
     }
-  );
+  },
+);
 
 router
   .route('/register')
@@ -62,7 +60,7 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
 
 router.route('/login').post(
@@ -99,7 +97,7 @@ router.route('/login').post(
     } catch (error) {
       next(error);
     }
-  }
+  },
 );
 
 export { router as authController };

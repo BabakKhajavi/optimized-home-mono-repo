@@ -1,0 +1,19 @@
+# docker-compose.yml (if needed for future use)
+version: '3'
+services:
+  express-app:
+    image: your-docker-registry/express-app:latest
+    ports:
+      - '3000:3000'
+    environment:
+      - SERVICE_CORS_ORIGIN_PORTAL=${SERVICE_CORS_ORIGIN_PORTAL}
+      - SERVICE_CORS_ORIGIN_APP=${SERVICE_CORS_ORIGIN_APP}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - DB_HOST=localhost
+      - DB_USERS=${DB_USERS}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+      - SENDGRID_REQUEST_ALARM_TEMPLATE_ID=${SENDGRID_REQUEST_ALARM_TEMPLATE_ID}
+      - SENDGRID_REQUEST_AUTO_REPLY_TEMPLATE_ID=${SENDGRID_REQUEST_AUTO_REPLY_TEMPLATE_ID}
+      - PORT=${PORT}

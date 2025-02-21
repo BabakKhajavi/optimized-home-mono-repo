@@ -9,15 +9,15 @@ if (result.error) {
 
 export const environment = {
   origins: [
-    process.env.CORS_ORIGIN_PORTAL as string,
-    process.env.CORS_ORIGIN_APP as string,
+    process.env.SERVICE_CORS_ORIGIN_PORTAL as string,
+    process.env.SERVICE_CORS_ORIGIN_APP as string,
     'http://localhost:4173',
   ],
   jwtSecretKey: process.env.JWT_SECRET_KEY,
-  host: process.env.HOST || 'localhost',
-  dbName: process.env.DATABASE || '',
-  username: process.env.USERS || '',
-  password: process.env.PASSWORD || '',
+  host: process.env.DB_HOST || 'localhost',
+  dbName: process.env.DB_DATABASE || '',
+  username: process.env.DB_USERS || '',
+  password: process.env.DB_PASSWORD || '',
   loggingDatabase: process.env.LOGGING_DATABASE === 'true',
   sendgrid: {
     sendGridAPIKey: process.env.SENDGRID_API_KEY,
