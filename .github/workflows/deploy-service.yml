@@ -53,11 +53,11 @@ jobs:
       - name: Install Node.js and dependencies on droplet
         run:
           ssh -i /tmp/droplet_key -o StrictHostKeyChecking=no ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }} '
-          cd /optimized-home
-          sudo apt update
-          sudo apt install -y nodejs npm
-          yarn install
-          cd apps/service
-          yarn build
-          pm2 start dist/server.js --name service-app
+          cd /optimized-home && \
+          sudo apt update && \
+          sudo apt install -y nodejs npm && \
+          yarn install && \
+          cd apps/service && \
+          yarn build && \
+          pm2 start dist/server.js --name service-app && \
           pm2 save'
