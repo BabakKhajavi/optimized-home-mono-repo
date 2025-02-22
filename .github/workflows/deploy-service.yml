@@ -39,6 +39,10 @@ jobs:
           echo "${{ secrets.DROPLET_SSH_KEY }}" > /tmp/droplet_key
           chmod 600 /tmp/droplet_key
 
+      - name: Create .ssh directory
+        run: |
+          mkdir -p ~/.ssh
+
       - name: Add droplet to known hosts
         run: |
           ssh-keyscan -H ${{ secrets.DROPLET_IP }} >> ~/.ssh/known_hosts
