@@ -40,12 +40,12 @@ jobs:
           chmod 600 /tmp/droplet_key
 
       - name: Copy application files to droplet
-        run: scp -i /tmp/droplet_key -r ./optimized-home-mono-repo ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }}:/optimized-home-mono-repo
+        run: scp -i /tmp/droplet_key -r ./* ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }}:/optimized-home
 
       - name: Install Node.js and dependencies on droplet
         run:
           ssh -i /tmp/droplet_key -o StrictHostKeyChecking=no ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }} '
-          cd /optimized-home-mono-repo
+          cd /optimized-home
           sudo apt update
           sudo apt install -y nodejs npm
           yarn install
