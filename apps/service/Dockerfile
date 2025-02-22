@@ -2,16 +2,11 @@
 FROM node:20
 WORKDIR /app
 
-# Copy only the necessary files to avoid issues with yarn.lock
-COPY package.json ./
+# Copy the monorepo dependencies from the root-level Docker image
+COPY --from=0 /app /app
 
-# Copy the shared libraries and root yarn.lock file
-
-# Install dependencies
-RUN yarn install --frozen-lockfile
-
-# Copy the service app files
-COPY . .
+# Navigate to the service directory
+WORKDIR /app/apps/service
 
 # Build the service app
 RUN yarn build
