@@ -39,12 +39,13 @@ jobs:
           ssh -i ~/.ssh/id_799 -o StrictHostKeyChecking=no ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }} 'bash -s' <<'EOF'
           sudo apt update
           sudo apt install -y nodejs npm
-          git clone https://github.com/BabakKhajavi/optimized-home-mono-repo.git
-          cd optimized-home-mono-repo
+          git clone https://github.com/BabakKhajavi/optimized-home-mono-repo.git /optimized-home-mono-repo
+          cd /optimized-home-mono-repo
           yarn install
           cd apps/service
           yarn build
           pm2 start dist/server.js --name service-app
+          pm2 save
           EOF
 
       - name: Create SSH private key file
@@ -53,12 +54,12 @@ jobs:
           chmod 600 /tmp/droplet_key
 
       - name: Copy application files to droplet
-        run: scp -i /tmp/droplet_key -r ./optimized-home-mono-repo ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }}:/var/www/optimized-home-mono-repo
+        run: scp -i /tmp/droplet_key -r ./optimized-home-mono-repo ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }}:/optimized-home-mono-repo
 
       - name: Deploy application
         run:
           ssh -i /tmp/droplet_key -o StrictHostKeyChecking=no ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }} '
-          cd /var/www/optimized-home-mono-repo
+          cd /optimized-home-mono-repo
           yarn install
           cd apps/service
           yarn build
