@@ -1,10 +1,10 @@
-# App-specific Dockerfile (apps/service/Dockerfile)
+# Dockerfile for apps/service
 FROM node:20
 
-# Copy the monorepo dependencies from the root-level Docker image
-COPY --from=dependencies /app /app
-
 WORKDIR /app/apps/service
+
+# Copy the service app files
+COPY . .
 
 # Build the service app
 RUN yarn build
