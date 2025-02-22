@@ -44,7 +44,7 @@ jobs:
           yarn install
           cd apps/service
           yarn build
-          pm2 restart all
+          pm2 start dist/server.js --name service-app
           EOF
 
       - name: Create SSH private key file
@@ -53,7 +53,7 @@ jobs:
           chmod 600 /tmp/droplet_key
 
       - name: Copy application files to droplet
-        run: scp -i /tmp/droplet_key -r ./your-repo ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }}:/var/www/your-repo
+        run: scp -i /tmp/droplet_key -r ./optimized-home-mono-repo ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }}:/var/www/optimized-home-mono-repo
 
       - name: Deploy application
         run:
@@ -62,4 +62,4 @@ jobs:
           yarn install
           cd apps/service
           yarn build
-          pm2 restart all'
+          pm2 restart service-app'
