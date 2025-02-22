@@ -39,6 +39,10 @@ jobs:
           echo "${{ secrets.DROPLET_SSH_KEY }}" > /tmp/droplet_key
           chmod 600 /tmp/droplet_key
 
+      - name: Add droplet to known hosts
+        run: |
+          ssh-keyscan -H ${{ secrets.DROPLET_IP }} >> ~/.ssh/known_hosts
+
       - name: Copy application files to droplet
         run: scp -i /tmp/droplet_key -r ./* ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }}:/optimized-home
 
