@@ -34,9 +34,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Create SSH private key file
+        run: |
+          echo "${{ secrets.DROPLET_SSH_KEY }}" > /tmp/droplet_key
+          chmod 600 /tmp/droplet_key
+
       - name: Install Node.js and dependencies
         run: |
-          ssh -i ~/.ssh/id_799 -o StrictHostKeyChecking=no ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }} 'bash -s' <<'EOF'
+          ssh -i /tmp/droplet_key -o StrictHostKeyChecking=no ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }} 'bash -s' <<'EOF'
           sudo apt update
           sudo apt install -y nodejs npm
           git clone https://github.com/BabakKhajavi/optimized-home-mono-repo.git /optimized-home-mono-repo
@@ -47,11 +52,6 @@ jobs:
           pm2 start dist/server.js --name service-app
           pm2 save
           EOF
-
-      - name: Create SSH private key file
-        run: |
-          echo "${{ secrets.DROPLET_SSH_KEY }}" > /tmp/droplet_key
-          chmod 600 /tmp/droplet_key
 
       - name: Copy application files to droplet
         run: scp -i /tmp/droplet_key -r ./optimized-home-mono-repo ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }}:/optimized-home-mono-repo
