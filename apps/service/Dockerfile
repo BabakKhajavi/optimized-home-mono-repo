@@ -7,7 +7,7 @@ WORKDIR /app/apps/service
 COPY . .
 
 # Build the service app
-RUN npm build
+RUN npm run build
 
 # Start the service app
 CMD ["node", "dist/server.js"]
