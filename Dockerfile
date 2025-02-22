@@ -1,6 +1,6 @@
 # Root-level Dockerfile
 FROM node:20
-WORKDIR /app
+WORKDIR /
 
 # Copy the entire monorepo into the Docker image
 COPY . .

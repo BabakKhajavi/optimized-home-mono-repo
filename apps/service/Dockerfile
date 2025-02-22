@@ -1,7 +1,7 @@
 # Dockerfile for apps/service
 FROM node:20
 
-WORKDIR /app/apps/service
+WORKDIR /
 
 # Copy the service app files
 COPY . .
