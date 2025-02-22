@@ -6,6 +6,12 @@ WORKDIR /
 # Copy the service app files
 COPY . .
 
+# Install TypeScript
+RUN npm install -g typescript
+
+# Install dependencies
+RUN npm install
+
 # Build the service app
 RUN npm run build
 
