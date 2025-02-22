@@ -39,28 +39,17 @@ jobs:
           echo "${{ secrets.DROPLET_SSH_KEY }}" > /tmp/droplet_key
           chmod 600 /tmp/droplet_key
 
-      - name: Install Node.js and dependencies
-        run: |
-          ssh -i /tmp/droplet_key -o StrictHostKeyChecking=no ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }} 'bash -s' <<'EOF'
+      - name: Copy application files to droplet
+        run: scp -i /tmp/droplet_key -r ./optimized-home-mono-repo ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }}:/optimized-home-mono-repo
+
+      - name: Install Node.js and dependencies on droplet
+        run:
+          ssh -i /tmp/droplet_key -o StrictHostKeyChecking=no ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }} '
+          cd /optimized-home-mono-repo
           sudo apt update
           sudo apt install -y nodejs npm
-          git clone https://github.com/BabakKhajavi/optimized-home-mono-repo.git /optimized-home-mono-repo
-          cd /optimized-home-mono-repo
           yarn install
           cd apps/service
           yarn build
           pm2 start dist/server.js --name service-app
-          pm2 save
-          EOF
-
-      - name: Copy application files to droplet
-        run: scp -i /tmp/droplet_key -r ./optimized-home-mono-repo ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }}:/optimized-home-mono-repo
-
-      - name: Deploy application
-        run:
-          ssh -i /tmp/droplet_key -o StrictHostKeyChecking=no ${{ secrets.DROPLET_USERNAME }}@${{ secrets.DROPLET_IP }} '
-          cd /optimized-home-mono-repo
-          yarn install
-          cd apps/service
-          yarn build
-          pm2 restart service-app'
+          pm2 save'
