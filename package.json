@@ -21,12 +21,14 @@
     "start:atoms": "yarn workspace @packages/atoms run watch",
     "start:molecules": "yarn workspace @packages/molecules run watch",
     "start:organisms": "yarn workspace @packages/organisms run watch",
-    "start:service": "yarn workspace @closet/service start:development",
+    "dev:container": "yarn workspace @closet/container start",
+    "build:container": "yarn workspace @closet/container build",
+    "dev:service": "yarn workspace @closet/service start:development",
+    "dev:dashboard": "concurrently \"yarn run start:common\" \"yarn run start:atoms\" \"yarn run start:molecules\" \"yarn run start:organisms\" \"yarn workspace @closet/dashboard start\"",
+    "dev:web": "yarn run start:web",
     "build:dashboard": "yarn workspace @closet/dashboard build",
-    "dev:dashboard": "concurrently \"yarn run start:service\" \"yarn run start:common\" \"yarn run start:atoms\" \"yarn run start:molecules\" \"yarn run start:organisms\" \"yarn workspace @closet/dashboard start\"",
     "start:dashboard": "yarn run start:service & yarn workspace @closet/dashboard serve",
     "start:web": "yarn workspace @closet/web dev",
-    "dev:web": "concurrently \"yarn run start:service\" \"yarn run start:atoms\" \"yarn run start:web\"",
     "start:dev": "concurrently \"yarn run start:service\" \"yarn run start:atoms\" \"yarn run start:web\" \"yarn run start:dashboard\""
   },
   "dependencies": {
@@ -42,7 +44,6 @@
     "@mui/x-data-grid": "^6.20.4",
     "@mui/x-date-pickers": "^6.10.0",
     "@mui/x-date-pickers-pro": "^6.10.0",
-    "axios": "^1.4.0",
     "dayjs": "^1.11.9",
     "formik": "^2.4.2",
     "lodash": "^4.17.21",
@@ -97,7 +98,6 @@
     "vite-plugin-compression": "^0.5.1"
   },
   "resolutions": {
-    "axios": "1.4.0",
     "typescript": "5.0.2"
   },
   "engines": {

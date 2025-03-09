@@ -3,16 +3,11 @@ import { Lato } from 'next/font/google';
 import '../styles/globals.css';
 import styles from './layout.module.scss';
 import Header from './layout/header/header';
-import Subscribe from './subscribe/subscribe';
 
-import CssBaseline from '@mui/material/CssBaseline';
-
-import createEmotionCache from './createEmotionCache';
-import { CacheProvider } from '@emotion/react';
-import { AppProps } from 'next/app';
-import { goldenBlackTheme } from '@packages/common';
 import { PrimaryButton } from '@packages/atoms';
-import { ClientThemeProvider } from './providers';
+import { ClientThemeProvider } from '../providers';
+import AppQueryProvider from '../providers/query-client-provider';
+import { StoreProvider } from '../providers/store-provider';
 
 export const metadata: Metadata = {
   title: 'Optimized Closets',
@@ -30,22 +25,25 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const api = new API();
-  // const categories = await api.get(`category/find`, { cache: 'force-cache' });
   return (
     <html lang="en">
       <body className={lato.className}>
-        <ClientThemeProvider>
-          {/* <StoreProvider menuState={{ ...menuInitialState, categories }}> */}
-          <header>{/* <Header categories={categories} /> */}</header>
-          <main>{children}</main>
-          <section className={styles.subscribe_wrapper}>
-            <Subscribe />
-          </section>
-          <footer>
-            <PrimaryButton>Hello Mono Repo (Next)</PrimaryButton>
-          </footer>
-        </ClientThemeProvider>
+        <AppQueryProvider>
+          <ClientThemeProvider>
+            <StoreProvider>
+              <header>
+                <Header />
+              </header>
+              {/* <main>{children}</main> */}
+              <section className={styles.subscribe_wrapper}>
+                {/* <Subscribe /> */}
+              </section>
+              <footer>
+                <PrimaryButton>Hello Mono Repo (Next)</PrimaryButton>
+              </footer>
+            </StoreProvider>
+          </ClientThemeProvider>
+        </AppQueryProvider>
       </body>
     </html>
   );

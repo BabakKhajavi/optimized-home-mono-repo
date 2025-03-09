@@ -1,5 +1,5 @@
 {
-  "name": "@closet/dashboard",
+  "name": "@closet/container",
   "version": "0.1.0",
   "main": "index.js",
   "type": "module",
@@ -21,6 +21,7 @@
     "@mui/x-data-grid": "^6.20.4",
     "@mui/x-date-pickers": "^6.10.0",
     "@mui/x-date-pickers-pro": "^6.10.0",
+    "axios": "~1.4.0",
     "dayjs": "^1.11.9",
     "formik": "^2.4.2",
     "react": "^18.2.0",
@@ -35,6 +36,7 @@
     "@packages/organisms": "^1.0.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/react": "^13.4.0",
+    "framer-motion": "^12.4.7",
     "history": "^5.3.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
@@ -46,8 +48,7 @@
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "sort-by": "^1.2.0",
-    "web-vitals": "^2.1.4",
-    "axios": "^1.7.9"
+    "web-vitals": "^2.1.4"
   },
   "devDependencies": {
     "@types/react-csv": "^1.1.3",

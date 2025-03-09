@@ -4,7 +4,7 @@ import { OptimizedImage, PrimaryButton } from '@packages/atoms';
 import { FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
 import { FormikTextField } from '@packages/molecules';
-import { ILogin, LogoVertical } from '@packages/common';
+import { ILogin } from '@packages/common';
 
 const initialLogin: ILogin = {
   username: '',
@@ -50,7 +50,7 @@ export const LoginForm: FC<LoginFormProps> = ({
             p={2}
           >
             <OptimizedImage
-              src={LogoVertical}
+              src="/images/logo-v.webp"
               alt="A classic closet with with golden color and the company name at the bottom"
               width={600}
               height={400}

@@ -1,7 +1,7 @@
 import express, { NextFunction } from 'express';
 import { Request, Response } from 'express';
 
-import { Category } from '../../models/category';
+import { Category, Subcategory } from '../../models';
 import { isAuthorized } from '../../middleware/user-validator';
 import { ErrorMessages, SuccessStatusCode } from '../../types';
 import { HttpError } from '../../utils/http-error';
@@ -26,7 +26,15 @@ router
   .route('/')
   .get(async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const result = await Category.findAll();
+      const result = await Category.findAll({
+        include: [
+          {
+            model: Subcategory,
+            as: 'subcategories', // Use the alias defined in your association
+            attributes: ['id', 'title'], // Specify the attributes you want to include
+          },
+        ],
+      });
       res.status(SuccessStatusCode.OK).send(result);
     } catch (error) {
       next(error);
@@ -47,7 +55,7 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
 
 router
@@ -69,7 +77,7 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
 
 router
@@ -91,7 +99,7 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
 
 export { router as categoryController };

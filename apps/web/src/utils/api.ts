@@ -1,25 +1,21 @@
-type NextOptions = {
-  revalidate: false | 0 | number;
+// utils/fetchProvider.ts
+import axios, { AxiosResponse } from 'axios';
+
+const apiClient = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL, // Customize the API URL
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+export const get = async <T>(url: string, params = {}): Promise<T> => {
+  const response: AxiosResponse<T> = await apiClient.get(url, { params });
+  return response.data;
 };
-type Options = {
-  method?: string;
-  cache?: 'force-cache' | 'no-store';
-  body?: BodyInit | null;
-  next?: NextOptions;
+
+export const post = async <T>(url: string, data: any): Promise<T> => {
+  const response: AxiosResponse<T> = await apiClient.post(url, data);
+  return response.data;
 };
-// { next: { revalidate: 3600 } }
-export class API {
-  private baseURL: String;
-  constructor() {
-    this.baseURL = process.env.NEXT_PUBLIC_BASE_URL || '';
-  }
-  async get(endpint: String, options: Options) {
-    try {
-      const res = await fetch(`${this.baseURL}/${endpint}`, options);
-      const data = await res.json();
-      return data.data;
-    } catch (error) {
-      throw error;
-    }
-  }
-}
+
+// Add more methods as needed (put, delete, etc.)

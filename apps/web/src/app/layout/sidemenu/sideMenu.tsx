@@ -64,7 +64,7 @@ const SideMenuSlide: FC<SideMenuSlideProps> = ({
                   key={item.category_id}
                   onClick={() => handleMenuItemClick(index)}
                 >
-                  <div>{item.category_name}</div>
+                  <div>{item.title}</div>
                   <FontAwesomeIcon
                     className={styles.chevron_icon}
                     icon={item.isOpen ? faChevronDown : faChevronRight}
@@ -85,7 +85,7 @@ const SideMenuSlide: FC<SideMenuSlideProps> = ({
                             href={`/subcategory/${subMenuItem.subcategory_id}`}
                             replace
                           >
-                            {subMenuItem.subcategory_name}
+                            {subMenuItem.subtitle}
                           </Link>
                         </div>
                       ))}

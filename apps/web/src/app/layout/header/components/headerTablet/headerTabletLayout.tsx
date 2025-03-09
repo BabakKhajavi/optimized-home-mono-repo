@@ -2,7 +2,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import styles from './headerTabletLayout.module.scss';
-import { HeaderLayoutProps } from '../../../../../types/props/headerLayout.types';
 import Image from 'next/image';
 import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -10,22 +9,20 @@ import IconButton from '@mui/material/IconButton';
 import FormControl from '@mui/material/FormControl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faList } from '@fortawesome/free-solid-svg-icons';
-import CustomButton from '@/components/button/customButton';
-import { useMenu } from '@/hooks/useMenu';
-import { useAppDispatch } from '@/store/reduxHooks';
-import { toggleSideMenu } from '@/app/layout/sidemenu/menuSlice';
+import { useStore } from '../../../../../providers';
+import { HeaderLayoutProps } from '../../../../../types';
+import { PrimaryButton } from '@packages/atoms';
+
 const HeaderTabletLayout: FC<HeaderLayoutProps> = () => {
-  const menu = useMenu();
-  const dispatch = useAppDispatch();
-  const handleClickOpenRequestmodal = () => {
+  const { isSideMenuOpen, toggleSideMenu } = useStore();
+  const handleClickOpenRequestModal = () => {
     // gaEvent({
     //   action: 'click_get_started',
     //   label: 'Get Started (Header)',
     // });
-    // router.push('/request');
   };
   const displayMenu = () => {
-    dispatch(toggleSideMenu(!menu.isSideMenuOpen));
+    toggleSideMenu();
   };
   return (
     <div className={styles.tablet_header_wrapper}>
@@ -43,21 +40,17 @@ const HeaderTabletLayout: FC<HeaderLayoutProps> = () => {
       <div className={styles.right_wrapper}>
         <div className={styles.info_wrapper}>
           <div className={styles.info_cell}>
-            <CustomButton isGolden height="height_md">
+            <PrimaryButton isGolden>
               <a href="tel:+14168935540" className={styles.phone_link}>
                 Call Us Now
               </a>
-            </CustomButton>
+            </PrimaryButton>
           </div>
           <div className={styles.vertical_divider} />
           <div className={styles.info_cell_md}>
-            <CustomButton
-              onClick={handleClickOpenRequestmodal}
-              isGolden
-              height="height_md"
-            >
+            <PrimaryButton onClick={handleClickOpenRequestModal} isGolden>
               Free Consultation
-            </CustomButton>
+            </PrimaryButton>
           </div>
           <div className={styles.vertical_divider} />
           <div className={styles.info_cell_icon_lg}>

@@ -11,6 +11,7 @@ export const environment = {
   origins: [
     process.env.SERVICE_CORS_ORIGIN_PORTAL as string,
     process.env.SERVICE_CORS_ORIGIN_APP as string,
+    process.env.SERVICE_CORS_ORIGIN_WEB as string,
     'http://localhost:4173',
   ],
   jwtSecretKey: process.env.JWT_SECRET_KEY,

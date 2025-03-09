@@ -35,14 +35,14 @@ const createDatabaseAssociations = () => {
 
   Category.hasMany(Subcategory, {
     foreignKey: 'category_id',
-    as: 'subcategory',
+    as: 'subcategories',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
     constraints: true,
   });
   Subcategory.belongsTo(Category, {
     foreignKey: 'category_id',
-    as: 'category',
+    as: 'subcategories',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
     constraints: true,

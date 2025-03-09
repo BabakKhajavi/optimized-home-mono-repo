@@ -13,6 +13,10 @@ dotenv.config({
 
 const app: Application = express();
 
+app.use('/health', (req, res) => {
+  res.send({ isHealthy: true });
+});
+
 // Use compression middleware
 app.use(compression());
 

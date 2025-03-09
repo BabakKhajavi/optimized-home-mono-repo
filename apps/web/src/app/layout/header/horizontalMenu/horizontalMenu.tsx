@@ -4,6 +4,7 @@ import { Menu } from '@mui/material';
 import { popoverClasses } from '@mui/material/Popover';
 import styles from './horizontalMenu.module.scss';
 import { HorizontalMenuProps } from './horizontalMenu.types';
+import { ISubcategory } from '@packages/common';
 const HorizontalMenu: FC<HorizontalMenuProps> = ({ menuItem }) => {
   let currentlyHovering = false;
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
@@ -41,7 +42,7 @@ const HorizontalMenu: FC<HorizontalMenuProps> = ({ menuItem }) => {
         onMouseOver={handleClick}
         onMouseLeave={handleCloseHover}
       >
-        {menuItem?.category_name}
+        {menuItem?.title}
       </div>
       {menuItem?.subcategories && menuItem?.subcategories?.length > 0 && (
         <Menu
@@ -69,20 +70,22 @@ const HorizontalMenu: FC<HorizontalMenuProps> = ({ menuItem }) => {
           }}
           disableRestoreFocus
         >
-          {menuItem?.subcategories.map((subMenuItem, i) => (
-            <div
-              className={styles.sub_menu_item}
-              key={`submenu-itemh-${i}`}
-              onClick={handleCloseHover}
-            >
-              <Link
-                href={`/subcategory/${subMenuItem?.subcategory_id}`}
-                className={styles.sub_menu_link}
+          {menuItem?.subcategories?.map(
+            (subMenuItem: ISubcategory, i: number) => (
+              <div
+                className={styles.sub_menu_item}
+                key={`submenu-itemh-${i}`}
+                onClick={handleCloseHover}
               >
-                {subMenuItem?.subcategory_name}
-              </Link>
-            </div>
-          ))}
+                <Link
+                  href={`/subcategory/${subMenuItem?.id}`}
+                  className={styles.sub_menu_link}
+                >
+                  {subMenuItem?.title}
+                </Link>
+              </div>
+            ),
+          )}
         </Menu>
       )}
     </div>

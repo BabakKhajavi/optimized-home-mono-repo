@@ -6,7 +6,6 @@ import { router } from '../../routes';
 import { Box } from '@mui/material';
 import { FlatButton, OptimizedImage } from '@packages/atoms';
 import { DashboardPaths } from '../../types';
-import { LogoHorizontal } from '@packages/common';
 export const Header: FC = memo(() => {
   const dispatch = useAppDispatch();
   const handleLogout = useCallback(() => {
@@ -28,7 +27,7 @@ export const Header: FC = memo(() => {
     >
       <Box>
         <OptimizedImage
-          src={LogoHorizontal}
+          src="/images/logo-h.webp"
           alt="a golden closet picture on the left with the company name and url"
           width={250}
         />
