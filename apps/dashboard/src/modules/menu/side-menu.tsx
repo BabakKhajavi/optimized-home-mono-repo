@@ -46,7 +46,7 @@ export const SideMenu = () => {
     },
     [dispatch, menu, navigate],
   );
-
+  console.log('menu', menu);
   return (
     <Box px={2} py={4}>
       {menu.map((item, index) => (

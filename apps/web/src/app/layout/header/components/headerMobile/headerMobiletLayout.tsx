@@ -11,6 +11,7 @@ import { faSearch, faList } from '@fortawesome/free-solid-svg-icons';
 import { PrimaryButton } from '@packages/atoms';
 import { HeaderLayoutProps } from '../../../../../types';
 import { useStore } from '../../../../../providers';
+import Image from 'next/image';
 const HeaderMobileLayout: FC<HeaderLayoutProps> = ({
   toggleSideMenuChecked,
 }) => {

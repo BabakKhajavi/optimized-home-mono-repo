@@ -25,7 +25,7 @@ class Subcategory
           allowNull: false,
         },
         description: {
-          type: DataTypes.STRING,
+          type: DataTypes.STRING(4000),
           allowNull: false,
         },
         category_id: {

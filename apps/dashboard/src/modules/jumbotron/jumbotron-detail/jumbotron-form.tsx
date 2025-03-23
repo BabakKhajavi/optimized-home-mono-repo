@@ -44,7 +44,6 @@ export const JumbotronForm: FC<JumbotronFormProps> = ({ jumbotron }) => {
       title: Yup.string().required('Required'),
       subtitle: Yup.string().required('Required'),
       is_main_jumbotron: Yup.boolean().required('Required'),
-      description: Yup.string().required('Required'),
       media: Yup.string().required('Required'),
       subcategory_id: Yup.number().required('Required'),
     });

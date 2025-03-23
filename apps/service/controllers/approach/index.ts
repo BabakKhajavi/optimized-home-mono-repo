@@ -61,7 +61,7 @@ router
         }
         next(error);
       }
-    }
+    },
   );
 
 router
@@ -96,7 +96,7 @@ router
         }
         next(error);
       }
-    }
+    },
   );
 
 router
@@ -120,7 +120,7 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
 
 export { router as approachController };

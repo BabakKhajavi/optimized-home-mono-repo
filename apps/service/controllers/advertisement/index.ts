@@ -39,7 +39,6 @@ router
     advertisementValidators.createValidator,
     validateRequest,
     async (req: Request, res: Response, next: NextFunction) => {
-      console.log('req.body', req.body);
       try {
         let payload = { ...req.body };
         const approach = await Advertisement.create(payload);
@@ -47,7 +46,7 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
 
 router
@@ -69,7 +68,7 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
 
 router
@@ -87,7 +86,7 @@ router
       }
       await result.destroy();
       res.status(SuccessStatusCode.OK).send(result);
-    }
+    },
   );
 
 export { router as advertisementController };

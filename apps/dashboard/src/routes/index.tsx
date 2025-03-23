@@ -163,7 +163,7 @@ export const routes: RouteObject[] = [
         element: <SubcategoryListContainer />,
       },
       {
-        path: `/${DashboardPaths.SUBCATEGORY}/:id`,
+        path: `/${DashboardPaths.SUBCATEGORY_DETAIL}/:id`,
         element: <SubcategoryDetailContainer />,
       },
       { path: DashboardPaths.JUMBOTRON, element: <JumbotronListContainer /> },

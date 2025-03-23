@@ -53,22 +53,23 @@ export const Layout: FC = () => {
             spacing={3}
             sx={{ mt: 5, maxWidth: 1000 }}
             flexGrow={1}
+            my={2}
           >
-            <Grid item>
+            <Grid item display="flex" justifyContent={'center'} xs={12} md={4}>
               <CardButton
                 imageUrl="/images/closet-entry.webp"
                 title="Optimized Closets"
                 des="Custom Closets Tailored to Your Needs"
               />
             </Grid>
-            <Grid item>
+            <Grid item display="flex" justifyContent={'center'} xs={12} md={4}>
               <CardButton
                 imageUrl="/images/kitchen-entry.jpg"
                 title="Optimized Kitchen "
                 des="Kitchen Cabinet Design Tailored to Your Needs"
               />
             </Grid>
-            <Grid item>
+            <Grid item display="flex" justifyContent={'center'} xs={12} md={4}>
               <CardButton
                 imageUrl="/images/renovation-entry.jpg"
                 title="Optimized Renovation"

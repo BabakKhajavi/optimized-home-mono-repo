@@ -47,7 +47,7 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
 
 router
@@ -71,7 +71,7 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
 
 router
@@ -93,7 +93,7 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
 
 export { router as subcategoryController };

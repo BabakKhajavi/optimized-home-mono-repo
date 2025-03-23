@@ -1,14 +1,10 @@
-import {
-  faList,
-  faCartShopping,
-  faGears,
-} from '@fortawesome/free-solid-svg-icons';
+import { faList } from '@fortawesome/free-solid-svg-icons';
 import { MenuType } from './interfaces';
 import { DashboardPaths } from './enums';
 export const menuPath: MenuType[] = [
   {
     id: 0,
-    title: 'Contents',
+    title: 'Optimized Closet',
     path: DashboardPaths.CATEGORY,
     icon: faList,
     isOpen: false,
@@ -71,54 +67,36 @@ export const menuPath: MenuType[] = [
         path: DashboardPaths.ADVERTISEMENT,
         isSelected: false,
       },
-    ],
-  },
-  {
-    id: 1,
-    title: 'Requests',
-    path: DashboardPaths.REQUEST,
-    icon: faCartShopping,
-    isOpen: false,
-    subMenu: [
       {
-        id: 0,
+        id: 8,
         title: 'Find Us',
         pageTitle: 'Find Us List',
         path: DashboardPaths.FIND_US,
         isSelected: false,
       },
       {
-        id: 1,
+        id: 9,
         title: 'Cities',
         pageTitle: 'Cities List',
         path: DashboardPaths.CITY,
         isSelected: false,
       },
       {
-        id: 2,
+        id: 10,
         title: 'Requests',
         pageTitle: 'Request List',
         path: DashboardPaths.REQUEST,
         isSelected: false,
       },
-    ],
-  },
-  {
-    id: 2,
-    title: 'Settings',
-    path: DashboardPaths.USER,
-    icon: faGears,
-    isOpen: false,
-    subMenu: [
       {
-        id: 0,
+        id: 11,
         title: 'Users',
         pageTitle: 'Users List',
         path: DashboardPaths.USER,
         isSelected: false,
       },
       {
-        id: 1,
+        id: 12,
         title: 'Contact',
         pageTitle: 'Contact List',
         path: DashboardPaths.CONTACT,
