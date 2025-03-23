@@ -8,7 +8,13 @@ import { get } from '../../../utils/api';
 import { ICategory } from '@packages/common';
 
 const Header: React.FC = async () => {
-  const categories: ICategory[] = await get<ICategory[]>('category');
+  const categories: ICategory[] = await get<ICategory[]>(
+    `category`,
+    {}, // No query parameters
+    'force-cache', // cacheOptions
+    'cors', // revalidateOptions
+    { revalidate: 3600 }, // nextOptions
+  );
   return (
     <div className={styles.wrapper}>
       <HeaderDesktopLayout menuList={categories} />

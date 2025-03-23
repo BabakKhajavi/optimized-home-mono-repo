@@ -26,7 +26,6 @@ const HeaderDesktopLayout: FC<HeaderLayoutProps> = ({ menuList }) => {
     // });
     router.push('/request');
   };
-  console.log('localMenuList', localMenuList);
   return (
     <div className={styles.desktop_header_wrapper}>
       <div className={styles.left_wrapper}>

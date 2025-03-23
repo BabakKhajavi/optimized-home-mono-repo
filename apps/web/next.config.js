@@ -1,6 +1,6 @@
 const nextConfig = {
   compress: true,
-  images: { domains: [] },
+  images: { domains: ['localhost', 'optimizedhome.ca'] },
 };
 
 export default nextConfig;

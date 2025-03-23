@@ -8,6 +8,7 @@ import { PrimaryButton } from '@packages/atoms';
 import { ClientThemeProvider } from '../providers';
 import AppQueryProvider from '../providers/query-client-provider';
 import { StoreProvider } from '../providers/store-provider';
+import Jumbotron from './layout/jumbotron/jumbotron';
 
 export const metadata: Metadata = {
   title: 'Optimized Closets',
@@ -34,6 +35,9 @@ export default async function RootLayout({
               <header>
                 <Header />
               </header>
+              <section>
+                <Jumbotron />
+              </section>
               {/* <main>{children}</main> */}
               <section className={styles.subscribe_wrapper}>
                 {/* <Subscribe /> */}

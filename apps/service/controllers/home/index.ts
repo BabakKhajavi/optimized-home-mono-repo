@@ -46,10 +46,9 @@ router
         let payload = { ...req.body, step: parseInt(req.body.step) };
         const formFile = req.file;
         if (formFile) {
-          const filePath = formFile.path;
           payload = {
             ...payload,
-            media: filePath,
+            media: req.file?.filename,
           };
         }
 
@@ -61,7 +60,7 @@ router
         }
         next(error);
       }
-    }
+    },
   );
 
 router
@@ -78,10 +77,9 @@ router
         let payload = { ...req.body, step: parseInt(req.body.step) };
         const result = await Home.findByPk(id);
         if (formFile) {
-          const filePath = formFile.path;
           payload = {
             ...payload,
-            media: filePath,
+            media: req.file?.filename,
           };
           if (result?.media) cleanUpFile(result.media);
         }
@@ -96,7 +94,7 @@ router
         }
         next(error);
       }
-    }
+    },
   );
 
 router
@@ -120,7 +118,7 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
 
 export { router as homeController };

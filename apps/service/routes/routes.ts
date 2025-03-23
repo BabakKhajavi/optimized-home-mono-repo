@@ -22,8 +22,15 @@ export function handleRoutes(app: Application): void {
     '/api/static/request',
     express.static(path.join(__dirname, '..', 'public/request')),
   );
+  app.use('/api/static/jumbotron', (req, res, next) => {
+    const staticPath = path.join(__dirname, '..', 'public/jumbotron');
+    console.log('Serving static files from:', staticPath);
+    console.log('Requested URL:', req.url);
+    next();
+  });
+
   app.use(
-    '/api/static/jumbo',
+    '/api/static/jumbotron',
     express.static(path.join(__dirname, '..', 'public/jumbotron')),
   );
   app.use(

@@ -46,10 +46,9 @@ router
         let payload = { ...req.body, step: parseInt(req.body.step) };
         const formFile = req.file;
         if (formFile) {
-          const filePath = formFile.path;
           payload = {
             ...payload,
-            media: filePath,
+            media: req.file?.filename,
           };
         }
 
@@ -78,10 +77,9 @@ router
         let payload = { ...req.body, step: parseInt(req.body.step) };
         const result = await Jumbotron.findByPk(id);
         if (formFile) {
-          const filePath = formFile.path;
           payload = {
             ...payload,
-            media: filePath,
+            media: req.file?.filename,
           };
           if (result?.media) cleanUpFile(result.media);
         }

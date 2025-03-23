@@ -1,21 +1,96 @@
-// utils/fetchProvider.ts
-import axios, { AxiosResponse } from 'axios';
-
-const apiClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL, // Customize the API URL
+const defaultOptions: RequestInit = {
   headers: {
     'Content-Type': 'application/json',
   },
-});
-
-export const get = async <T>(url: string, params = {}): Promise<T> => {
-  const response: AxiosResponse<T> = await apiClient.get(url, { params });
-  return response.data;
 };
 
-export const post = async <T>(url: string, data: any): Promise<T> => {
-  const response: AxiosResponse<T> = await apiClient.post(url, data);
-  return response.data;
+const apiClient = async <T>(
+  endpoint: string,
+  options: RequestInit = {},
+  cacheOptions: RequestCache = 'default',
+): Promise<T> => {
+  const fetchOptions: RequestInit = {
+    ...defaultOptions,
+    ...options,
+    cache: cacheOptions || 'default', // Default if undefined
+  };
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}${endpoint}`;
+  const response = await fetch(url, fetchOptions);
+
+  if (!response.ok) {
+    const errorText = await response.text(); // Fetch error details
+    throw new Error(
+      `HTTP error at ${url}! Status: ${response.status}, Details: ${errorText}`,
+    );
+  }
+
+  return response.json();
 };
 
-// Add more methods as needed (put, delete, etc.)
+export const get = async <T>(
+  url: string,
+  params: Record<string, any> = {},
+  cacheOptions?: RequestCache,
+  revalidateOptions: RequestMode = 'cors', // Only GET has revalidation
+  nextOptions?: { revalidate: number }, // Add nextOptions parameter
+): Promise<T> => {
+  const queryString = new URLSearchParams(params).toString();
+  const fullUrl = queryString ? `${url}?${queryString}` : url;
+
+  const options: RequestInit = { method: 'GET', mode: revalidateOptions };
+  if (nextOptions) {
+    options.headers = {
+      ...options.headers,
+      'Next-Revalidate': nextOptions.revalidate.toString(),
+    };
+  }
+
+  return apiClient<T>(
+    fullUrl,
+    options, // Revalidation applies here
+    cacheOptions ?? 'force-cache',
+  );
+};
+
+export const post = async <T>(
+  url: string,
+  data: any,
+  cacheOptions?: RequestCache,
+): Promise<T> => {
+  return apiClient<T>(
+    url,
+    {
+      method: 'POST',
+      body: JSON.stringify(data),
+    },
+    cacheOptions ?? 'no-store', // Default for POST
+  );
+};
+
+export const put = async <T>(
+  url: string,
+  data: any,
+  cacheOptions?: RequestCache,
+): Promise<T> => {
+  return apiClient<T>(
+    url,
+    {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    },
+    cacheOptions ?? 'no-store', // Default for PUT
+  );
+};
+
+export const del = async <T>(
+  url: string,
+  cacheOptions?: RequestCache,
+): Promise<T> => {
+  return apiClient<T>(
+    url,
+    {
+      method: 'DELETE',
+    },
+    cacheOptions ?? 'no-store', // Default for DELETE
+  );
+};

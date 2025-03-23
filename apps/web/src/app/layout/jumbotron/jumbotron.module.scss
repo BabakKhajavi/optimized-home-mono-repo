@@ -1,5 +1,5 @@
-@use '../styles/layouts.scss' as layouts;
-@use '../styles/colors.scss' as colors;
+@use '../../../styles/layouts.scss' as layouts;
+@use '../../../styles/colors.scss' as colors;
 .jombo_image_wrapper {
   background-color: colors.$white_color;
 }
