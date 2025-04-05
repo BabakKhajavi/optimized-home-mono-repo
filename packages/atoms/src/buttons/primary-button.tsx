@@ -1,5 +1,11 @@
 import { FC } from 'react';
-import { Button, ButtonProps, CircularProgress } from '@mui/material';
+import {
+  Button,
+  ButtonProps,
+  CircularProgress,
+  ThemeProvider,
+} from '@mui/material';
+import { goldenBlackTheme } from '@packages/common';
 
 type PrimaryButtonProps = ButtonProps & {
   handleClick?: () => void;
@@ -15,13 +21,15 @@ export const PrimaryButton: FC<PrimaryButtonProps> = ({
   ...props
 }) => {
   return (
-    <Button
-      variant="contained"
-      onClick={handleClick}
-      disabled={loading}
-      {...props}
-    >
-      {loading ? <CircularProgress size={24} /> : children}
-    </Button>
+    <ThemeProvider theme={goldenBlackTheme}>
+      <Button
+        variant="contained"
+        onClick={handleClick}
+        disabled={loading}
+        {...props}
+      >
+        {loading ? <CircularProgress size={24} /> : children}
+      </Button>
+    </ThemeProvider>
   );
 };

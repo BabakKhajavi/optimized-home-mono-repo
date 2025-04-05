@@ -33,7 +33,7 @@ class Gallery
           allowNull: false,
         },
         description: {
-          type: DataTypes.STRING,
+          type: DataTypes.STRING(8000),
           allowNull: true,
         },
         media: {
@@ -57,7 +57,7 @@ class Gallery
         sequelize,
         modelName: 'gallery',
         timestamps: false,
-      }
+      },
     );
   }
 }

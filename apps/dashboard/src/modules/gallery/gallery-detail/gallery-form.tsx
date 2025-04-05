@@ -40,13 +40,15 @@ export const GalleryForm: FC<GalleryFormProps> = ({ gallery }) => {
 
   const validationSchema = useMemo(() => {
     return Yup.object({
-      step: Yup.number().max(10, 'No More than 10').required('Required'),
       title: Yup.string()
         .max(100, 'Must be 100 characters or less')
         .required('Required'),
-      summary: Yup.string().required('Required'),
+      subtitle: Yup.string().required('Required'),
       description: Yup.string().required('Required'),
       media: Yup.string().required('Required'),
+      media_thumb: Yup.string().required('Required'),
+      is_main: Yup.boolean(),
+      subcategory_id: Yup.number().required('Required').min(1, 'Required'),
     });
   }, []);
 
@@ -74,7 +76,7 @@ export const GalleryForm: FC<GalleryFormProps> = ({ gallery }) => {
       }
     },
   });
-
+  console.log('formik', formik.errors);
   return (
     <Box display="flex" mt={3}>
       <FormikProvider value={formik}>

@@ -1,7 +1,7 @@
 // import { ReactNode } from 'react';
 // import { AsyncThunk } from '@reduxjs/toolkit';
 
-import { ICategory } from '@packages/common';
+import { ICategory, IGallery } from '@packages/common';
 
 export interface HeaderLayoutProps {
   menuList: ICategory[];
@@ -134,3 +134,9 @@ export interface HeaderLayoutProps {
 // export interface SideMenuContainerProps {
 //   categories: Category[];
 // }
+export interface GallerySubcategoryResponse extends IGallery {
+  subcategory: {
+    id: number;
+    title: string;
+  };
+}

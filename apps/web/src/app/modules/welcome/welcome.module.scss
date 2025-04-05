@@ -1,0 +1,66 @@
+@use '../../../styles/layouts.scss' as layouts;
+@use '../../../styles/colors.scss' as colors;
+.wrapper {
+  width: 100%;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    padding: 30px 15px;
+  }
+}
+.section_title_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.horizontal_divider {
+  border: 1px solid #e8e8e8;
+  margin: 15px;
+  width: 40%;
+}
+.section_title {
+  text-align: left;
+  font-size: 30px;
+  color: #777777;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.section_subtitle {
+  text-align: left;
+  font-size: 20px;
+  color: #777777;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.section_description {
+  font-size: 16px;
+  line-height: 30px;
+  white-space: pre-wrap;
+  margin-bottom: 20px;
+  @media screen and (max-width: 750px) {
+    margin-bottom: 15px;
+  }
+}
+.subsection_container {
+  display: grid;
+  grid-template-columns: 2fr 350px;
+  grid-gap: 20px;
+  margin: 0;
+  width: 100%;
+  @media screen and (max-width: 750px) {
+    display: block;
+  }
+}
+.media_wrapper {
+  .image {
+    width: 350px;
+    height: 100%;
+  }
+}

@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import '../styles/globals.css';
 import styles from './layout.module.scss';
-import Header from './layout/header/header';
+import Header from './modules/layout/header/header';
 
-import { PrimaryButton } from '@packages/atoms';
 import { ClientThemeProvider } from '../providers';
 import AppQueryProvider from '../providers/query-client-provider';
 import { StoreProvider } from '../providers/store-provider';
-import Jumbotron from './layout/jumbotron/jumbotron';
+import Jumbotron from './modules/layout/jumbotron/jumbotron';
+import { FooterContainer } from './modules/layout/footer/footer-container';
 
 export const metadata: Metadata = {
   title: 'Optimized Closets',
@@ -38,12 +38,12 @@ export default async function RootLayout({
               <section>
                 <Jumbotron />
               </section>
-              {/* <main>{children}</main> */}
-              <section className={styles.subscribe_wrapper}>
-                {/* <Subscribe /> */}
-              </section>
+              <main className={styles.main_content}>{children}</main>
+              {/* <section className={styles.subscribe_wrapper}>
+                <Subscribe />
+              </section> */}
               <footer>
-                <PrimaryButton>Hello Mono Repo (Next)</PrimaryButton>
+                <FooterContainer />
               </footer>
             </StoreProvider>
           </ClientThemeProvider>

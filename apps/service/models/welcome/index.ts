@@ -31,11 +31,11 @@ class Welcome
           allowNull: false,
         },
         description: {
-          type: DataTypes.STRING,
+          type: DataTypes.STRING(4000),
           allowNull: false,
         },
         sub_description: {
-          type: DataTypes.STRING,
+          type: DataTypes.STRING(4000),
           allowNull: false,
         },
         media: {
@@ -47,7 +47,7 @@ class Welcome
         sequelize,
         modelName: 'welcome',
         timestamps: false,
-      }
+      },
     );
   }
 }

@@ -26,7 +26,7 @@ const createDatabaseAssociations = () => {
     constraints: true,
   });
   Subcategory.hasMany(Gallery, {
-    foreignKey: 'subcategory_id',
+    foreignKey: 'id',
     as: 'galleries',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',

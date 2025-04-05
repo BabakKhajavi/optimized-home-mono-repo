@@ -22,7 +22,6 @@ export const WelcomeForm: FC<WelcomeFormProps> = ({ welcome }) => {
 
   const validationSchema = useMemo(() => {
     return Yup.object({
-      step: Yup.number().max(10, 'No More than 10').required('Required'),
       title: Yup.string().required('Required'),
       subtitle: Yup.string().required('Required'),
       description: Yup.string().required('Required'),
@@ -45,7 +44,7 @@ export const WelcomeForm: FC<WelcomeFormProps> = ({ welcome }) => {
     onSubmit: async (values: IWelcome) => {
       const rest = Object.assign({}, values);
       delete rest.id;
-
+      console.log('values', values);
       if (values.id) {
         await updateWelcome(values).unwrap();
       } else {
@@ -53,7 +52,7 @@ export const WelcomeForm: FC<WelcomeFormProps> = ({ welcome }) => {
       }
     },
   });
-
+  console.log('error', formik.errors);
   return (
     <Box display="flex" mt={3}>
       <FormikProvider value={formik}>
@@ -81,7 +80,11 @@ export const WelcomeForm: FC<WelcomeFormProps> = ({ welcome }) => {
             />
           </Box>
           <Box mb={2}>
-            <FormikFileUpload name="media" label="image" accept={['image/*']} />
+            <FormikFileUpload
+              name="media"
+              label="video/image"
+              accept={['image/*', 'video/mp4']}
+            />
           </Box>
           <Box display="flex" justifyContent="flex-end">
             <PrimaryButton

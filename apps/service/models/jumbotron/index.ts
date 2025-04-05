@@ -27,7 +27,7 @@ class Jumbotron
           allowNull: false,
         },
         subtitle: {
-          type: DataTypes.STRING,
+          type: DataTypes.STRING(4000),
           allowNull: false,
         },
         media: {
@@ -47,7 +47,7 @@ class Jumbotron
         sequelize,
         modelName: 'jumbotron',
         timestamps: false,
-      }
+      },
     );
   }
 }

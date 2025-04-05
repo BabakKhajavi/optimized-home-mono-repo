@@ -23,7 +23,7 @@ class Home extends Model<IHome, IHomeCreationAttributes> implements IHome {
           allowNull: false,
         },
         description: {
-          type: DataTypes.STRING,
+          type: DataTypes.STRING(8000),
           allowNull: false,
         },
         subtitle: {
@@ -39,7 +39,7 @@ class Home extends Model<IHome, IHomeCreationAttributes> implements IHome {
         sequelize,
         modelName: 'subcategory',
         timestamps: false,
-      }
+      },
     );
   }
 }

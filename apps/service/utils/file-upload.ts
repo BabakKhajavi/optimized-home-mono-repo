@@ -18,9 +18,13 @@ const storage = (uploadPath: string) =>
 const upload = (uploadPath: string) =>
   multer({
     storage: storage(uploadPath),
-    limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB file size limit
+    limits: { fileSize: 200 * 1024 * 1024 }, // 200 MB file size limit
     fileFilter: (req, file, cb) => {
-      if (file.mimetype.startsWith('image/')) {
+      if (
+        file.mimetype.startsWith('image/') ||
+        file.mimetype.startsWith('video/')
+      ) {
+        console.log('file=>', file);
         cb(null, true);
       } else {
         cb(null, false);
@@ -30,12 +34,12 @@ const upload = (uploadPath: string) =>
 
 export const singleFileUpload = (
   path: string,
-  fieldname = 'media'
+  fieldname = 'media',
 ): RequestHandler => upload(path).single(fieldname);
 
 export const multipleFileUpload = (
   path: string,
-  fields: { name: string; maxCount: number }[]
+  fields: { name: string; maxCount: number }[],
 ): RequestHandler => upload(path).fields(fields);
 
 // Clean up function to delete the temporary file if an error occurs

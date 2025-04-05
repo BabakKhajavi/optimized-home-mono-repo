@@ -65,7 +65,7 @@ class Request
           allowNull: true,
         },
         note: {
-          type: DataTypes.STRING,
+          type: DataTypes.STRING(8000),
           allowNull: true,
         },
         media1: {

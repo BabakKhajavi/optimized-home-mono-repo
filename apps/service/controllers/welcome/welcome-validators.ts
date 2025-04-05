@@ -27,6 +27,7 @@ const commonValidations = [
     .withMessage(isRequired('description')),
   body('media')
     .custom((value, { req }) => {
+      console.log('file=>=>', req.file);
       if (typeof value === 'string' || req.file) {
         return true;
       }

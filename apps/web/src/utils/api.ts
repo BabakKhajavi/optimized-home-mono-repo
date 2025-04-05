@@ -31,8 +31,8 @@ export const get = async <T>(
   url: string,
   params: Record<string, any> = {},
   cacheOptions?: RequestCache,
-  revalidateOptions: RequestMode = 'cors', // Only GET has revalidation
-  nextOptions?: { revalidate: number }, // Add nextOptions parameter
+  revalidateOptions: RequestMode = 'cors',
+  nextOptions?: { revalidate: number },
 ): Promise<T> => {
   const queryString = new URLSearchParams(params).toString();
   const fullUrl = queryString ? `${url}?${queryString}` : url;
@@ -63,7 +63,7 @@ export const post = async <T>(
       method: 'POST',
       body: JSON.stringify(data),
     },
-    cacheOptions ?? 'no-store', // Default for POST
+    cacheOptions ?? 'no-store',
   );
 };
 
@@ -78,7 +78,7 @@ export const put = async <T>(
       method: 'PUT',
       body: JSON.stringify(data),
     },
-    cacheOptions ?? 'no-store', // Default for PUT
+    cacheOptions ?? 'no-store',
   );
 };
 
@@ -91,6 +91,6 @@ export const del = async <T>(
     {
       method: 'DELETE',
     },
-    cacheOptions ?? 'no-store', // Default for DELETE
+    cacheOptions ?? 'no-store',
   );
 };

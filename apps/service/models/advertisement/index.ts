@@ -23,14 +23,14 @@ class Advertisement
           allowNull: false,
         },
         type: DataTypes.STRING,
-        htmlContent: DataTypes.STRING,
+        htmlContent: DataTypes.STRING(8000),
         styles: DataTypes.STRING,
       },
       {
         sequelize,
         modelName: 'advertisement',
         timestamps: false,
-      }
+      },
     );
   }
 }

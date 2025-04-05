@@ -1,0 +1,197 @@
+@use '../../../styles/layouts.scss' as layouts;
+@use '../../../styles/colors.scss' as colors;
+.wrapper {
+  width: 100%;
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.section_title_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.section_title {
+  text-align: left;
+  font-size: 30px;
+  color: #777777;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.galleries_container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 0;
+  gap: 20px;
+  margin: 25px auto;
+  @media (max-width: 1450px) {
+    width: 1200px;
+  }
+  @media (max-width: 1260px) {
+    width: 1000px;
+  }
+  @media (max-width: 1030px) {
+    width: 760px;
+  }
+  @media (max-width: 800px) {
+    width: 600px;
+    gap: 10px;
+  }
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+.galleries_item_wrapper {
+  position: relative;
+}
+
+.galleries_title {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  background-color: #888888;
+  font-size: 20px;
+  z-index: 3;
+  opacity: 0.8;
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.galleries_title :hover {
+  background-color: #000;
+}
+
+.circle-loading-wrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 48%;
+  z-index: 1000;
+  width: 100%;
+  color: white;
+}
+
+.image_wrapper {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  & > div {
+    position: relative !important;
+  }
+  .image {
+    object-fit: cover;
+    position: relative !important;
+    width: 380px !important;
+    height: 380px !important;
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+    -webkit-transition: 0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+    @media (max-width: 1260px) {
+      width: 320px !important;
+      height: 320px !important;
+      transform: scale(1.25);
+      -webkit-transform: scale(1.25);
+      &:hover {
+        cursor: pointer;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+    @media (max-width: 1030px) {
+      width: 370px !important;
+      height: 370px !important;
+      transform: scale(1.25);
+      -webkit-transform: scale(1.18);
+      &:hover {
+        cursor: pointer;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+    @media (max-width: 800px) {
+      width: 295px !important;
+      height: 295px !important;
+      transform: scale(1.25);
+      -webkit-transform: scale(1.18);
+      &:hover {
+        cursor: pointer;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+    @media (max-width: 800px) {
+      width: 295px !important;
+      height: 295px !important;
+      transform: scale(1.25);
+      -webkit-transform: scale(1.18);
+      &:hover {
+        cursor: pointer;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+    @media (max-width: 640px) {
+      width: 400px !important;
+      height: 400px !important;
+      transform: scale(1.25);
+      -webkit-transform: scale(1.18);
+      &:hover {
+        cursor: pointer;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+    @media (max-width: 450px) {
+      width: 350px !important;
+      height: 350px !important;
+      transform: scale(1.25);
+      -webkit-transform: scale(1.18);
+      &:hover {
+        cursor: pointer;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.carousel_container {
+  width: 100%;
+  @media (min-width: 640px) {
+    display: none;
+  }
+  @media (max-width: 640px) {
+    width: 400px !important;
+    height: 400px !important;
+    align-self: center;
+  }
+  @media (max-width: 450px) {
+    width: 350px !important;
+    height: 350px !important;
+    align-self: center;
+  }
+}
+
+.horizontal_divider {
+  border: 1px solid #e8e8e8;
+  margin: 15px;
+  width: 40%;
+}

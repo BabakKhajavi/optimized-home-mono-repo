@@ -43,7 +43,7 @@ router
     validateRequest,
     async (req: Request, res: Response, next: NextFunction) => {
       try {
-        let payload = { ...req.body, step: parseInt(req.body.step) };
+        let payload = { ...req.body };
         const formFile = req.file;
         if (formFile) {
           payload = {
@@ -51,6 +51,7 @@ router
             media: req.file?.filename,
           };
         }
+        console.log('payload=>', payload);
 
         const welcome = await Welcome.create(payload);
         res.status(SuccessStatusCode.CREATED).send(welcome);

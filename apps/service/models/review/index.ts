@@ -32,7 +32,7 @@ class Review
           allowNull: false,
         },
         description: {
-          type: DataTypes.STRING,
+          type: DataTypes.STRING(8000),
           allowNull: false,
         },
         link: {
@@ -52,7 +52,7 @@ class Review
         sequelize,
         modelName: 'review',
         timestamps: false,
-      }
+      },
     );
   }
 }

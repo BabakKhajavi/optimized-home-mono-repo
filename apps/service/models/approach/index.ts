@@ -31,11 +31,11 @@ class Approach
           allowNull: false,
         },
         summary: {
-          type: DataTypes.STRING,
+          type: DataTypes.STRING(4000),
           allowNull: false,
         },
         description: {
-          type: DataTypes.STRING,
+          type: DataTypes.STRING(8000),
           allowNull: true,
         },
         media: {
@@ -47,7 +47,7 @@ class Approach
         sequelize,
         modelName: 'approach',
         timestamps: false,
-      }
+      },
     );
   }
 }

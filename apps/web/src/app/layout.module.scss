@@ -11,7 +11,7 @@
 .main_content {
   background-color: colors.$white-color;
   color: colors.$black_color;
-  height: calc(100vh - 220px);
+  padding: 20px 8%;
 }
 .subscribe_wrapper {
   height: 120px;
@@ -69,4 +69,7 @@
   font-size: 20px;
   font-family: arial, sans-serif;
   text-decoration: none;
+}
+
+main {
 }

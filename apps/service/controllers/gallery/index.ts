@@ -6,6 +6,7 @@ import { ErrorMessages, MediaPath, SuccessStatusCode } from '../../types';
 import { HttpError } from '../../utils/http-error';
 import { galleryValidators } from './gallery-validators';
 import { validateRequest } from '../../middleware/request-validator';
+import { Subcategory } from '../../models/subcategory';
 
 const router: express.Router = express.Router();
 router
@@ -48,7 +49,16 @@ router
   .route('/')
   .get(async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const result = await Gallery.findAll();
+      const result = await Gallery.findAll({
+        include: [
+          {
+            model: Subcategory,
+            as: 'subcategory',
+            attributes: ['id', 'title'],
+          },
+        ],
+      });
+      console.log('result', result);
       res.status(SuccessStatusCode.OK).send(result);
     } catch (error) {
       next(error);
@@ -66,12 +76,12 @@ router.route('/').post(
   async (req: Request, res: Response, next: NextFunction) => {
     const files = req.files as { [fieldname: string]: Express.Multer.File[] };
     try {
-      const mediaFilePath = files?.['media']?.[0]?.path ?? '';
-      const mediaThumbFilePath = files?.['media_thumb']?.[0]?.path ?? '';
+      const mediaFileName = files?.['media']?.[0]?.filename ?? '';
+      const mediaThumbFileName = files?.['media_thumb']?.[0]?.filename ?? '';
       const payload = {
         ...req.body,
-        media: mediaFilePath,
-        media_thumb: mediaThumbFilePath,
+        media: mediaFileName,
+        media_thumb: mediaThumbFileName,
       };
 
       const gallery = await Gallery.create(payload);
@@ -87,7 +97,7 @@ router.route('/').post(
       }
       next(error);
     }
-  }
+  },
 );
 
 router.route('/:id').put(
@@ -122,7 +132,7 @@ router.route('/:id').put(
       }
       next(error);
     }
-  }
+  },
 );
 
 router
@@ -146,7 +156,7 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
 
 export { router as galleryController };
