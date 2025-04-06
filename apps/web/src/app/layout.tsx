@@ -39,9 +39,6 @@ export default async function RootLayout({
                 <Jumbotron />
               </section>
               <main className={styles.main_content}>{children}</main>
-              {/* <section className={styles.subscribe_wrapper}>
-                <Subscribe />
-              </section> */}
               <footer>
                 <FooterContainer />
               </footer>

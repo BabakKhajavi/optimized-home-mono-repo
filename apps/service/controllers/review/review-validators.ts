@@ -31,8 +31,8 @@ const commonValidations = [
     .notEmpty()
     .withMessage(isRequired('owner')),
   body('is_approved')
-    .isFloat()
-    .withMessage(shouldBeNumber('is_approved'))
+    .isBoolean()
+    .withMessage('Should be a boolean')
     .notEmpty()
     .withMessage(isRequired('is_approved')),
 ];

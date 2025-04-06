@@ -96,12 +96,12 @@ export const ApproachListContainer: FC = () => {
       {
         field: 'step',
         headerName: 'Step',
-        flex: 1,
+        width: 70,
       },
       {
         field: 'title',
         headerName: 'Title',
-        width: 150,
+        flex: 1,
       },
       {
         field: 'actions',

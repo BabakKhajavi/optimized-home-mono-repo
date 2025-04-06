@@ -1,5 +1,11 @@
 @use '../../../styles/layouts.scss' as layouts;
 @use '../../../styles/colors.scss' as colors;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 8%;
+}
 .wrapper {
   width: 100%;
   padding: 30px 0;

@@ -1,7 +1,7 @@
 import { get } from '../../../utils/api';
 import { Gallery } from './gallery';
 import { GallerySubcategoryResponse } from '../../../types/interfaces';
-
+import styles from './gallery.module.scss';
 export const GalleryContainer: React.FC = async () => {
   const galleries: GallerySubcategoryResponse[] = await get<
     GallerySubcategoryResponse[]
@@ -11,6 +11,8 @@ export const GalleryContainer: React.FC = async () => {
     (gallery) => gallery.is_main === true,
   );
   return (
-    <>{galleries.length > 0 && <Gallery galleries={filteredMainGalleries} />}</>
+    <div className={styles.container}>
+      {galleries.length > 0 && <Gallery galleries={filteredMainGalleries} />}
+    </div>
   );
 };

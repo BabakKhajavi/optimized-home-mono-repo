@@ -36,7 +36,6 @@ const HeaderDesktopLayout: FC<HeaderLayoutProps> = ({ menuList }) => {
         <div className={styles.info_wrapper}>
           <div className={styles.info_cell_lg}>
             <TextField
-              // className={styles.search_input}
               placeholder="Search"
               variant="outlined"
               InputProps={{
@@ -111,9 +110,9 @@ const HeaderDesktopLayout: FC<HeaderLayoutProps> = ({ menuList }) => {
           </Link>
           {localMenuList.length > 0 &&
             localMenuList.map((item: any, index: number) => (
-              <div key={`item-${index}`}>
+              <span key={`item-${index}`}>
                 <HorizontalMenu menuItem={item} />
-              </div>
+              </span>
             ))}
         </div>
       </div>

@@ -68,6 +68,7 @@ const HorizontalMenu: FC<HorizontalMenuProps> = ({ menuItem }) => {
               pointerEvents: 'none',
             },
           }}
+          disableScrollLock
           disableRestoreFocus
         >
           {menuItem?.subcategories?.map(

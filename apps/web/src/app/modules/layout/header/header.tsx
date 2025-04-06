@@ -10,10 +10,10 @@ import { ICategory } from '@packages/common';
 const Header: React.FC = async () => {
   const categories: ICategory[] = await get<ICategory[]>(
     `category`,
-    {}, // No query parameters
-    'force-cache', // cacheOptions
-    'cors', // revalidateOptions
-    { revalidate: 3600 }, // nextOptions
+    {},
+    'force-cache',
+    'cors',
+    { revalidate: 3600 },
   );
   return (
     <div className={styles.wrapper}>

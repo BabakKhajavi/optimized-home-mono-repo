@@ -71,7 +71,9 @@ export const ReviewForm: FC<ReviewFormProps> = ({ review }) => {
     <Box display="flex" mt={3}>
       <FormikProvider value={formik}>
         <form onSubmit={formik.handleSubmit}>
-          <FormikTextField name="owner" label="Reviewer" />
+          <Box mb={2} sx={{ width: 500 }}>
+            <FormikTextField name="owner" label="Reviewer" />
+          </Box>
           <Box mb={2} sx={{ width: 500 }}>
             <FormikSelectField
               name="stars"
@@ -96,7 +98,7 @@ export const ReviewForm: FC<ReviewFormProps> = ({ review }) => {
           <Box display="flex" mb={2} width="100%">
             <FormikCheckbox
               name="is_approved"
-              label={'Is Main Review?'}
+              label={'Approved?'}
               checked={formik.values.is_approved}
             />
           </Box>

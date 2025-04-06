@@ -1,0 +1,71 @@
+@use '../../../styles/layouts.scss' as layouts;
+@use '../../../styles/colors.scss' as colors;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 8%;
+}
+.wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  padding: 30px 10px;
+  max-width: 500px;
+}
+.section_title_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.section_title {
+  text-align: center;
+  font-size: '30px';
+  font-weight: 700;
+  color: #777777;
+  margin-bottom: 15px;
+}
+.review_wrapper {
+  text-align: left;
+  padding: 15px;
+}
+.review_title_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  align-items: center;
+  padding: 10px 0 15px 0;
+}
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  font-style: italic;
+}
+.description {
+  font-size: 16px;
+  font-style: italic;
+  line-height: 20px;
+}
+.source {
+  font-size: 14px;
+  font-style: italic;
+  color: #cfcbc8;
+  margin-left: 8px;
+}
+.carousel_wrapper {
+  width: 600px;
+  margin: auto;
+  @media (max-width: 800px) {
+    width: 600px;
+  }
+  @media (max-width: 640px) {
+    width: 400px;
+  }
+  @media (max-width: 450px) {
+    width: 350px;
+  }
+}
