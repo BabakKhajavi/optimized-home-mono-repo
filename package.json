@@ -23,11 +23,11 @@
     "start:organisms": "yarn workspace @packages/organisms run watch",
     "build:container": "yarn workspace @closet/container build",
     "build:service": "yarn workspace @closet/service build",
+    "build:dashboard": "yarn workspace @closet/dashboard build",
     "dev:container": "yarn workspace @closet/container start",
     "dev:service": "yarn workspace @closet/service start:development",
     "dev:dashboard": "concurrently \"yarn run start:common\" \"yarn run start:atoms\" \"yarn run start:molecules\" \"yarn run start:organisms\" \"yarn workspace @closet/dashboard start\"",
     "dev:web": "yarn run start:web",
-    "build:dashboard": "yarn workspace @closet/dashboard build",
     "start:dashboard": "yarn run start:service & yarn workspace @closet/dashboard serve",
     "start:web": "yarn workspace @closet/web dev",
     "start:dev": "concurrently \"yarn run start:service\" \"yarn run start:atoms\" \"yarn run start:web\" \"yarn run start:dashboard\""
@@ -94,6 +94,7 @@
     "rollup-plugin-visualizer": "^5.13.1",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.2",
+    "tsup": "^8.4.0",
     "typescript": "5.0.2",
     "vite": "^6.0.6",
     "vite-plugin-compression": "^0.5.1"

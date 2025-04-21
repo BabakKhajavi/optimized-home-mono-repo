@@ -1,7 +1,7 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query';
 
 export const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:8080/api',
+  baseUrl: 'https://optimizedhome.ca/api',
   prepareHeaders: (headers, { getState }) => {
     const state = getState() as { authReducer: { token: string } };
     const token = state.authReducer.token;
