@@ -63,21 +63,6 @@ const createDatabaseAssociations = () => {
     constraints: true,
   });
 
-  Address.hasMany(Request, {
-    foreignKey: 'address_id',
-    as: 'requestAddress',
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-    constraints: true,
-  });
-  Request.belongsTo(Address, {
-    foreignKey: 'address_id',
-    as: 'requestAddress',
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-    constraints: true,
-  });
-
   Address.belongsTo(City, {
     foreignKey: 'city_id',
     as: 'city',
@@ -92,9 +77,6 @@ const createDatabaseAssociations = () => {
     onUpdate: 'CASCADE',
     constraints: true,
   });
-
-  Request.belongsTo(FindUs, { foreignKey: 'findus_id', as: 'findus' });
-  FindUs.hasMany(Request, { foreignKey: 'findus_id', as: 'requests' });
 };
 
 export const initializeModels = (sequelize: Sequelize) => {

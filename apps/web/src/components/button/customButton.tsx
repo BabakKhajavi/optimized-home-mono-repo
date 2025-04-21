@@ -8,7 +8,7 @@ const CustomButton: FC<any> = ({
   onClick,
   disabled,
   type,
-  isGolden,
+  isContrast,
   fontSize,
   tabIndex,
 }) => {
@@ -20,7 +20,7 @@ const CustomButton: FC<any> = ({
   return (
     <>
       <button
-        className={isGolden ? daynamicGoldenStyle : daynamicBlackStyle}
+        className={isContrast ? daynamicGoldenStyle : daynamicBlackStyle}
         type={type || 'button'}
         disabled={disabled}
         onClick={onClick}

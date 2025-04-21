@@ -29,7 +29,7 @@ const HeaderTabletLayout: FC<HeaderLayoutProps> = () => {
       <div className={styles.left_wrapper}>
         <Link href={'/'} as={'image'}>
           <Image
-            src={'/images/main-logo.webp'}
+            src={'/images/main-logo.png'}
             alt="a golden closet logo"
             width={400}
             height={81}
@@ -40,7 +40,7 @@ const HeaderTabletLayout: FC<HeaderLayoutProps> = () => {
       <div className={styles.right_wrapper}>
         <div className={styles.info_wrapper}>
           <div className={styles.info_cell}>
-            <PrimaryButton isGolden>
+            <PrimaryButton isContrast>
               <a href="tel:+14168935540" className={styles.phone_link}>
                 Call Us Now
               </a>
@@ -48,7 +48,7 @@ const HeaderTabletLayout: FC<HeaderLayoutProps> = () => {
           </div>
           <div className={styles.vertical_divider} />
           <div className={styles.info_cell_md}>
-            <PrimaryButton onClick={handleClickOpenRequestModal} isGolden>
+            <PrimaryButton onClick={handleClickOpenRequestModal} isContrast>
               Free Consultation
             </PrimaryButton>
           </div>
@@ -58,49 +58,6 @@ const HeaderTabletLayout: FC<HeaderLayoutProps> = () => {
           </div>
         </div>
         <div className={styles.menu_wrapper}>
-          <FormControl
-            fullWidth
-            sx={{
-              width: '100%',
-              height: '28px',
-              backgroundColor: 'white',
-              borderRadius: '5px',
-            }}
-            variant="outlined"
-            size="small"
-            disabled
-          >
-            <OutlinedInput
-              id="outlined-adornment-weight"
-              endAdornment={
-                <InputAdornment
-                  id="search-adorment"
-                  style={{ backgroundColor: 'white' }}
-                  position="end"
-                >
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    edge="end"
-                  >
-                    <FontAwesomeIcon
-                      icon={faSearch}
-                      style={{ width: '14px' }}
-                    />
-                  </IconButton>
-                </InputAdornment>
-              }
-              aria-describedby="outlined-weight-helper-text"
-              inputProps={{
-                style: {
-                  height: '12px',
-                  width: '100%',
-                  fontSize: '12px',
-                  lineHeight: '12px',
-                },
-                'aria-label': 'weight',
-              }}
-            />
-          </FormControl>
           <Link
             href="https://www.instagram.com/optimized.closets/?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"
             target="_blank"

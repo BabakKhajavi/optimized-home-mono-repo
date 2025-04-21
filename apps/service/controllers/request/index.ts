@@ -38,13 +38,11 @@ router
   });
 
 router.route('/').post(
-  isAuthorized,
   multipleFileUpload(MediaPath.REQUEST, [
     { name: 'media1', maxCount: 1 },
     { name: 'media2', maxCount: 1 },
     { name: 'media3', maxCount: 1 },
   ]),
-  requestValidators.createValidator,
   validateRequest,
   async (req: ExpressRequest, res: Response, next: NextFunction) => {
     const files = req.files as { [fieldname: string]: Express.Multer.File[] };
@@ -72,12 +70,11 @@ router.route('/').post(
       }
       next(error);
     }
-  }
+  },
 );
 
 router.route('/:id').put(
   isAuthorized,
-  requestValidators.updateValidator,
   validateRequest,
   multipleFileUpload(MediaPath.REQUEST, [
     { name: 'media1', maxCount: 1 },
@@ -112,7 +109,7 @@ router.route('/:id').put(
       }
       next(error);
     }
-  }
+  },
 );
 
 router
@@ -138,7 +135,7 @@ router
       } catch (error) {
         next(error);
       }
-    }
+    },
   );
 
 export { router as requestController };

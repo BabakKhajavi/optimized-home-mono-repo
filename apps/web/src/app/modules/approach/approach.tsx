@@ -76,25 +76,23 @@ export const Approach: FC<ApproachPropsType> = ({ approaches }) => {
           {approaches?.map((item, index) => (
             <Box key={index} className={styles.cards}>
               <Box className={styles.step}> {index + 1}</Box>
-              <div>
-                <Box className={styles.jumbo_wrapper}>
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_BASE_STATIC_URL}/approach/${item.media}`}
-                    alt={item.title}
-                    layout="responsive"
-                    objectFit="cover"
-                    quality={100}
-                    width={1800}
-                    height={752}
-                  />
-                </Box>
-              </div>
+              <Box className={styles.jumbo_wrapper}>
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_BASE_STATIC_URL}/approach/${item.media}`}
+                  alt={item.title}
+                  layout="responsive"
+                  objectFit="cover"
+                  quality={100}
+                  width={1800}
+                  height={752}
+                />
+              </Box>
               <Box className={styles.card_title}>{item.title}</Box>
               <Box className={styles.card_summary}>{item.summary}</Box>
               {index === approaches.length - 1 && (
                 <Box className={styles.button_wrapper}>
                   <PrimaryButton
-                    isGolden
+                    isContrast
                     onClick={() => {
                       handleOpenRequestModal();
                     }}

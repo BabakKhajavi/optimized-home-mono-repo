@@ -9,6 +9,7 @@ import AppQueryProvider from '../providers/query-client-provider';
 import { StoreProvider } from '../providers/store-provider';
 import Jumbotron from './modules/layout/jumbotron/jumbotron';
 import { FooterContainer } from './modules/layout/footer/footer-container';
+import SideMenu from './modules/side-menu';
 
 export const metadata: Metadata = {
   title: 'Optimized Closets',
@@ -42,6 +43,9 @@ export default async function RootLayout({
               <footer>
                 <FooterContainer />
               </footer>
+              <section>
+                <SideMenu />
+              </section>
             </StoreProvider>
           </ClientThemeProvider>
         </AppQueryProvider>

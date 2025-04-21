@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: #000;
+  background-color: #0b0b0b;
   min-height: 200px;
   padding-top: 20px;
 }
@@ -67,18 +67,18 @@
 }
 .contact_us_wrapper {
   padding-top: 8px;
-  color: #e4cd85;
+  color: #ffffff;
 }
 .subscribe_wrapper {
   padding-top: 8px;
-  color: #e4cd85;
+  color: #ffffff;
   @media (max-width: 640px) {
     display: none;
   }
 }
 .bottom_subscribe_wrapper {
   padding-top: 8px;
-  color: #e4cd85;
+  color: #ffffff;
   margin: auto;
   margin-top: 20px;
   @media (min-width: 640px) {
@@ -136,7 +136,7 @@
 .contact_us_title {
   font-size: 18px;
   font-weight: 600;
-  color: #e4cd85;
+  color: #ffffff;
   margin-bottom: 15px;
 }
 
@@ -154,11 +154,12 @@
 }
 .info_style {
   width: '120px';
-  color: '#e4cd85';
+  color: '#ffffff';
 }
 .button_wrapper {
   display: flex;
   justify-content: flex-end;
+  margin-top: 10px;
 }
 .icon_style {
   cursor: pointer;

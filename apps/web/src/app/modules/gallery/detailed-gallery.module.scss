@@ -1,0 +1,127 @@
+@use '../../../styles/layouts.scss' as layouts;
+@use '../../../styles/colors.scss' as colors;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 8%;
+}
+.wrapper {
+  width: 100%;
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.section_title_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.section_title {
+  text-align: center;
+  font-size: 30px;
+  color: #777777;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.galleries_item_wrapper {
+  position: relative;
+}
+
+.galleries_title {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  background-color: #888888;
+  font-size: 20px;
+  z-index: 3;
+  opacity: 0.8;
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.galleries_title :hover {
+  background-color: #000;
+}
+
+.circle-loading-wrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 48%;
+  z-index: 1000;
+  width: 100%;
+  color: white;
+}
+
+.galleries_container {
+  width: 100%;
+  max-width: 900px;
+  padding: 10px 5%;
+  pointer-events: auto;
+  // @media (max-width: 480px) {
+  //   max-width: 100%;
+  //   padding: 0 10px;
+  // }
+}
+
+.swiper_container {
+  margin: 0 auto;
+
+  @media (max-width: 640px) {
+    max-width: 400px;
+    padding: 0 10px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.swiper_thumb {
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+/* Target the next button */
+.swiper-button-next {
+  color: #fff; /* Change the color */
+  background-color: rgba(0, 0, 0, 0.5); /* Add a background */
+  border-radius: 50%; /* Make it circular */
+  width: 40px;
+  height: 40px;
+}
+
+/* Target the previous button */
+.swiper-button-prev {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+/* Add hover effect */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

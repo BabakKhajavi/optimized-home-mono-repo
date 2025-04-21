@@ -28,25 +28,28 @@ const commonValidations = [
     .notEmpty()
     .withMessage(isRequired('Subcategory')),
   body('media').custom((value, { req }) => {
+    if (req.body.media) {
+      return true;
+    }
     if (req.files && req.files['media']) {
-      if (req.files['media'][0]) {
+      if (req.files['media'][0] || typeof req.files['media'][0] === 'string') {
         return true;
       }
       throw new Error('Media should be a file');
     }
-    if (value) {
-      throw new Error('Media thumb should be a file');
-    }
     return true;
   }),
   body('media_thumb').custom((value, { req }) => {
+    if (req.body.media) {
+      return true;
+    }
     if (req.files && req.files['media_thumb']) {
-      if (req.files['media_thumb'][0]) {
+      if (
+        req.files['media_thumb'][0] ||
+        typeof req.files['media_thumb'][0] === 'string'
+      ) {
         return true;
       }
-      throw new Error('Media thumb should be a file');
-    }
-    if (value) {
       throw new Error('Media thumb should be a file');
     }
     return true;

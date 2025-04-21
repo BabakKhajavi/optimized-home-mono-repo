@@ -20,7 +20,7 @@ const initialRequest: IRequest = {
   media3: '',
   seen: false,
   is_online: false,
-  subcategories: [],
+  subcategories: '',
   city_id: 0,
 };
 

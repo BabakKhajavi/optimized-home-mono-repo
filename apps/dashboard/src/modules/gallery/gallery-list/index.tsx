@@ -106,9 +106,9 @@ export function GalleryListContainer() {
       },
       {
         field: 'is_main',
-        headerName: 'Display in Header?',
+        headerName: 'Display in Home?',
         type: 'number',
-        width: 110,
+        width: 200,
         align: 'center',
         renderCell: (params) => {
           const row = params.row as IGallery;

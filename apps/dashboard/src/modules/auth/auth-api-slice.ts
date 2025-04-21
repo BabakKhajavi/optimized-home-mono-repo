@@ -1,10 +1,11 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from '../../api';
-import { APIMethods, APITags, DashboardPaths, Login } from '../../types';
+import { APIMethods, APITags, DashboardPaths } from '../../types';
 import { updateAlert } from '../alert/alert-slice';
 import {
   EnumSeverity,
   getErrorMessage,
+  ILogin,
   IUser,
   LoginResponse,
 } from '@packages/common';
@@ -55,7 +56,7 @@ export const usersApiSlice = createApi({
         }
       },
     }),
-    login: builder.mutation<LoginResponse, Login>({
+    login: builder.mutation<LoginResponse, ILogin>({
       query: (newUser) => ({
         url: '/auth/login',
         method: APIMethods.POST,
@@ -86,7 +87,7 @@ export const usersApiSlice = createApi({
       query: ({ id, ...updatedUser }) => ({
         url: `/auth/${id}`,
         method: APIMethods.PUT,
-        body: updatedUser,
+        body: { id, ...updatedUser },
       }),
       invalidatesTags: [APITags.UserList],
       async onQueryStarted(

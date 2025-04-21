@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 import { FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Box } from '@mui/material';
@@ -45,8 +45,6 @@ export const RequestForm: FC<RequestFormProps> = ({ request }) => {
       customer_name: Yup.string().required('Required'),
       email: Yup.string().email('Invalid email format').required('Required'),
       phone: Yup.string().required('Required'),
-      phone_alt: Yup.string(),
-      schedule: Yup.string().required('Required'),
       subcategories: Yup.string().required('Required'),
     });
   }, []);
@@ -64,8 +62,8 @@ export const RequestForm: FC<RequestFormProps> = ({ request }) => {
       media1: request?.media1 ?? '',
       media3: request?.media3 ?? '',
       media2: request?.media2 ?? '',
-      subcategories: request?.subcategories ?? [],
-      seen: request?.seen ?? false,
+      subcategories: request?.subcategories ?? '',
+      seen: true,
       is_online: request?.is_online ?? false,
       city_id: request?.city_id ?? 0,
     },
@@ -80,9 +78,9 @@ export const RequestForm: FC<RequestFormProps> = ({ request }) => {
       } else {
         await addRequest(rest).unwrap();
       }
+      formik.resetForm();
     },
   });
-
   return (
     <Box display="flex" mt={3}>
       <FormikProvider value={formik}>
@@ -140,7 +138,7 @@ export const RequestForm: FC<RequestFormProps> = ({ request }) => {
             <FormikCheckbox
               name="seen"
               label={'Is Being Seen?'}
-              checked={formik.values.is_online}
+              checked={formik.values.seen}
               disabled
             />
           </Box>

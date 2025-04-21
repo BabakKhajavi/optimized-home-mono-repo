@@ -12,6 +12,7 @@ export function errorHandler(
   res: Response,
   next: NextFunction,
 ) {
+  console.log('error[errorHandler]', err);
   if (err?.sql) {
     res
       .status(ErrorStatusCode.BAD_REQUEST)

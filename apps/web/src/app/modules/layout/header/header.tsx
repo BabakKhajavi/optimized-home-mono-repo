@@ -13,12 +13,11 @@ const Header: React.FC = async () => {
     {},
     'force-cache',
     'cors',
-    { revalidate: 3600 },
+    { revalidate: 10 },
   );
   return (
     <div className={styles.wrapper}>
       <HeaderDesktopLayout menuList={categories} />
-      <HeaderTabletLayout menuList={categories} />
       <HeaderMobileLayout menuList={categories} />
     </div>
   );

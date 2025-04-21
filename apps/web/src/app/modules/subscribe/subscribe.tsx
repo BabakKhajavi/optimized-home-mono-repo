@@ -40,7 +40,7 @@ const Subscribe: FC<SubscribeProps> = () => {
                 },
               }}
             />
-            <CustomButton isGolden height="height_lg" width="width_sm">
+            <CustomButton isContrast height="height_lg" width="width_sm">
               Subscribe
             </CustomButton>
           </div>

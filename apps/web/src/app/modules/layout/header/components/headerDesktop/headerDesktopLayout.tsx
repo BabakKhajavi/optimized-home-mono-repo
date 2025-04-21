@@ -4,14 +4,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import styles from './headerDesktopLayout.module.scss';
 import Image from 'next/image';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { PrimaryButton } from '@packages/atoms';
 import HorizontalMenu from '../../horizontalMenu/horizontalMenu';
 import { HeaderLayoutProps } from '../../../../../../types';
-import { TextField } from '@mui/material';
 
 const HeaderDesktopLayout: FC<HeaderLayoutProps> = ({ menuList }) => {
   const router = useRouter();
@@ -24,7 +19,7 @@ const HeaderDesktopLayout: FC<HeaderLayoutProps> = ({ menuList }) => {
       <div className={styles.left_wrapper}>
         <Link href={'/'} as={'image'}>
           <Image
-            src={'/images/main-logo.webp'}
+            src={'/images/main-logo.png'}
             alt="a golden closet logo"
             width={400}
             height={81}
@@ -34,29 +29,6 @@ const HeaderDesktopLayout: FC<HeaderLayoutProps> = ({ menuList }) => {
       </div>
       <div className={styles.right_wrapper}>
         <div className={styles.info_wrapper}>
-          <div className={styles.info_cell_lg}>
-            <TextField
-              placeholder="Search"
-              variant="outlined"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton>
-                      <FontAwesomeIcon icon={faSearch} size="xs" />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-              size="small"
-              fullWidth
-              style={{
-                fontSize: '12px',
-                backgroundColor: 'white',
-                borderRadius: '5px',
-              }}
-            />
-          </div>
-          <div className={styles.vertical_divider} />
           <div className={styles.info_cell_icon}>
             <Link
               href="https://www.instagram.com/optimized.closets/?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"
@@ -91,7 +63,7 @@ const HeaderDesktopLayout: FC<HeaderLayoutProps> = ({ menuList }) => {
           </div>
           <div className={styles.vertical_divider} />
           <div className={styles.info_cell}>
-            <PrimaryButton>
+            <PrimaryButton isContrast>
               <a href="tel:+14168935540" className={styles.phone_link}>
                 Call Us Now
               </a>
@@ -99,7 +71,7 @@ const HeaderDesktopLayout: FC<HeaderLayoutProps> = ({ menuList }) => {
           </div>
           <div className={styles.vertical_divider} />
           <div className={styles.info_cell_md}>
-            <PrimaryButton onClick={handleClickOpenRequestModal} isGolden>
+            <PrimaryButton onClick={handleClickOpenRequestModal} isContrast>
               Free Consultation
             </PrimaryButton>
           </div>

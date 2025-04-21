@@ -7,9 +7,6 @@ import React, {
   useContext,
   useState,
 } from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import { goldenBlackTheme } from '@packages/common';
-import { CssBaseline } from '@mui/material';
 
 interface StoreContextProps {
   isSideMenuOpen: boolean;

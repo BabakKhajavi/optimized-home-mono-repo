@@ -14,3 +14,4 @@ export * from './welcome';
 export * from './request';
 export * from './auth';
 export * from './menu';
+export * from './user';

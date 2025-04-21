@@ -1,12 +1,11 @@
-const scrollWithOffcet = (element: any) => {
+export const scrollWithOffset = (element: any) => {
   const currentPosition = element.getBoundingClientRect().top;
   if (currentPosition) {
-    const offcet = 250;
-    const finalPosition = currentPosition + window.pageYOffset - offcet;
+    const offset = 250;
+    const finalPosition = currentPosition + window.pageYOffset - offset;
     window.scrollTo({
       top: finalPosition,
       behavior: 'smooth',
     });
   }
 };
-export default scrollWithOffcet;

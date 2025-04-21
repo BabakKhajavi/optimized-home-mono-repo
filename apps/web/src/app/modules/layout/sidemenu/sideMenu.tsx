@@ -38,7 +38,7 @@ const SideMenuSlide: FC<SideMenuSlideProps> = ({
         <div>
           <div className={styles.header_wrapper}>
             <Image
-              src={'/images/main-logo.webp'}
+              src={'/images/main-logo.png'}
               alt="a golden closet logo"
               width={245}
               height={50}

@@ -9,7 +9,7 @@ export const Footer: FC = memo(() => {
       justifyContent="center"
       alignItems="center"
       sx={{
-        color: '#e4cd84',
+        color: '#ffffff',
         width: '100%',
         height: '70px',
         backgroundColor: (theme) => theme.palette.common.black,

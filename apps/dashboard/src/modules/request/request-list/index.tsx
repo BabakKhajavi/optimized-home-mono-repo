@@ -13,6 +13,7 @@ import { useAppNavigate, useDashboardAlert } from '../../../hooks';
 import {
   useDeleteRequestMutation,
   useGetRequestsQuery,
+  useUpdateRequestMutation,
 } from '../request-api-slice';
 import { BoxLoading } from '@packages/molecules';
 import { PrimaryCheckbox } from '@packages/atoms';
@@ -24,6 +25,7 @@ export function RequestListContainer() {
   const { data: requests, isLoading } = useGetRequestsQuery(undefined, {
     refetchOnMountOrArgChange: 120, // fresh after two minutes after the last fetch
   });
+  const [updateRequest, { isLoading: isUpdating }] = useUpdateRequestMutation();
   const [deleteRequest] = useDeleteRequestMutation();
 
   const [searchString, setSearchString] = useState('');
@@ -65,8 +67,14 @@ export function RequestListContainer() {
   }, [navigateToPage]);
 
   const handleEditClick = useCallback(
-    (params: GridRowParams | GridRenderCellParams) => {
+    async (params: GridRowParams | GridRenderCellParams) => {
       const item = params.row as IRequest;
+      if (!item.seen) {
+        await updateRequest({
+          ...item,
+          seen: true,
+        } as IRequest);
+      }
 
       navigateToPage(
         DashboardPaths.REQUEST_DETAIL,
@@ -76,7 +84,7 @@ export function RequestListContainer() {
         item.id,
       );
     },
-    [navigateToPage],
+    [navigateToPage, updateRequest],
   );
 
   const handleDeleteClick = useCallback((params: GridRenderCellParams) => {
@@ -109,6 +117,17 @@ export function RequestListContainer() {
         field: 'phone',
         headerName: 'Phone',
         flex: 1,
+      },
+      {
+        field: 'seen',
+        headerName: 'Seen Before?',
+        type: 'number',
+        width: 110,
+        align: 'center',
+        renderCell: (params) => {
+          const row = params.row as IRequest;
+          return <PrimaryCheckbox checked={row?.seen ?? false} />;
+        },
       },
       {
         field: 'is_online',

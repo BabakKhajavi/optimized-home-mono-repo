@@ -30,7 +30,7 @@ interface ButtonInputProps {
 //   border-bottom-left-radius: 4px;
 //   border-top-left-radius: 4px;
 //   height: ${(props) => props.height || '40px'};
-//   color: ${(props) => props.textColor || '#e4cd84'};
+//   color: ${(props) => props.textColor || '#ffffff'};
 //   background-color: ${(props) => props.backgroundColor || '#000000'};
 //   cursor: pointer;
 //   text-transform: capitalize;

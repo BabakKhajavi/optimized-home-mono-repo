@@ -25,21 +25,21 @@ export const Layout: FC = () => {
           <Typography
             mt={13}
             variant="h2"
-            sx={{ color: '#e4cd84' }}
+            sx={{ color: '#ffffff' }}
             align="center"
           >
             Optimized Home
           </Typography>
           <Typography
             variant="h4"
-            sx={{ color: '#e4cd84', mt: 2 }}
+            sx={{ color: '#ffffff', mt: 2 }}
             align="center"
           >
             Your Dream Space, Tailored to Perfection
           </Typography>
           <Typography
             variant="h5"
-            sx={{ color: '#e4cd84', mt: 2 }}
+            sx={{ color: '#ffffff', mt: 2 }}
             align="center"
           >
             Home Renovations | Kitchen Cabinet Design | Custom Closets

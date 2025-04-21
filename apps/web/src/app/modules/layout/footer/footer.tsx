@@ -25,9 +25,9 @@ export const Footer: FC<FooterProps> = ({ contact }) => {
       <Link href={'/'} className={styles.top_image_link}>
         <Box className={styles.image_wrapper}>
           <Image
-            src={'/images/topside-logo.webp'}
+            src={'/images/main-logo.png'}
             alt="facebook"
-            width={200}
+            width={360}
             height={97}
           />
         </Box>
@@ -36,7 +36,7 @@ export const Footer: FC<FooterProps> = ({ contact }) => {
         <Link href={'/'} className={styles.left_image_link}>
           <Box className={styles.image_wrapper}>
             <Image
-              src={'/images/main-logo.webp'}
+              src={'/images/main-logo.png'}
               alt="facebook"
               width={250}
               height={51}
@@ -155,7 +155,7 @@ export const Footer: FC<FooterProps> = ({ contact }) => {
             }}
           />
           <Box className={styles.button_wrapper}>
-            <PrimaryButton isGolden>Subscribe</PrimaryButton>
+            <PrimaryButton isContrast>Subscribe</PrimaryButton>
           </Box>
         </Box>
       </Box>

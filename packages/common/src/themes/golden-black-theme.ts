@@ -1,6 +1,12 @@
 import { createTheme } from '@mui/material/styles';
 
 import { baseTheme } from './base';
+declare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    contrast: true;
+  }
+}
+
 declare module '@mui/material/styles' {
   interface Palette {
     customColors: {
@@ -32,22 +38,35 @@ export const goldenBlackTheme = createTheme({
     ...baseTheme.palette,
     customColors: {
       light: '#f5e1a4',
-      main: '#e4cd84',
-      dark: '#b39b5e',
+      main: '#ffffff',
+      dark: '#faf8f2',
       contrastText: '#000',
       lightGray: '#d3d3d3',
-      golden: '#e4cd84',
+      golden: '#ffffff',
       lightGolden: '#f2e77e',
     },
   },
   components: {
     MuiButton: {
+      variants: [
+        {
+          props: { variant: 'contrast' },
+          style: {
+            color: '#000',
+            backgroundColor: '#ffffff',
+            '&:hover': {
+              backgroundColor: '#faf8f2',
+            },
+          },
+        },
+      ],
       styleOverrides: {
         root: {
-          borderRadius: '8px',
+          borderRadius: '3px',
           textTransform: 'none',
           padding: '8px 16px',
-          color: '#e4cd84',
+          color: '#ffffff',
+          height: '30px',
           backgroundColor: '#000',
           '&:hover': {
             backgroundColor: '#66666e',

@@ -3,6 +3,7 @@ import { createBrowserRouter, RouteObject } from 'react-router-dom';
 
 import { Layout } from '../modules/layout';
 import { DashboardPaths } from '../types';
+import { UserDetailContainer, UserListContainer } from '../modules';
 
 const AdvertisementDetailContainer = lazy(() =>
   import('../modules').then((module) => ({
@@ -207,10 +208,10 @@ export const routes: RouteObject[] = [
         element: <CityDetailContainer />,
       },
 
-      { path: DashboardPaths.USER, element: <RequestListContainer /> },
+      { path: DashboardPaths.USER, element: <UserListContainer /> },
       {
         path: `/${DashboardPaths.USER_DETAIL}/:id`,
-        element: <RequestDetailContainer />,
+        element: <UserDetailContainer />,
       },
     ],
   },

@@ -30,7 +30,7 @@ export interface HeaderLayoutProps {
 //   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 //   disabled?: boolean;
 //   type?: 'submit' | 'reset' | 'button';
-//   isGolden?: boolean;
+//   isContrast?: boolean;
 //   width?: string;
 //   height?: string;
 //   fontSize?: string;

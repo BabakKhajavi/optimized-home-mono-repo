@@ -22,3 +22,7 @@ export interface MenuType {
   isOpen: boolean;
   subMenu: SubMenuType[];
 }
+export interface ILogin {
+  username: string;
+  password: string;
+}

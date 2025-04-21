@@ -33,7 +33,7 @@ const HeaderMobileLayout: FC<HeaderLayoutProps> = ({
           <Link href={'/'} as={'image'} className={styles.left_wrapper}>
             <Image
               className={styles.logo_img}
-              src={'/images/main-logo.webp'}
+              src={'/images/main-logo.png'}
               alt="a golden closet logo"
               width={197}
               height={40}
@@ -76,74 +76,18 @@ const HeaderMobileLayout: FC<HeaderLayoutProps> = ({
         </div>
       </div>
       <div className={styles.menu_wrapper}>
-        <div className={styles.search_cell}>
-          <FormControl
-            fullWidth
-            sx={{
-              width: '100%',
-              height: '28px',
-              backgroundColor: 'white',
-              borderRadius: '5px',
-            }}
-            variant="outlined"
-            size="small"
-            disabled
-          >
-            <OutlinedInput
-              id="outlined-adornment-weight"
-              endAdornment={
-                <InputAdornment
-                  id="search-adorment"
-                  style={{ backgroundColor: 'white' }}
-                  position="end"
-                >
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    edge="end"
-                  >
-                    <FontAwesomeIcon
-                      icon={faSearch}
-                      style={{ width: '14px' }}
-                    />
-                  </IconButton>
-                </InputAdornment>
-              }
-              aria-describedby="outlined-weight-helper-text"
-              inputProps={{
-                style: {
-                  height: '12px',
-                  width: '100%',
-                  fontSize: '12px',
-                  lineHeight: '12px',
-                },
-                'aria-label': 'weight',
-              }}
-            />
-          </FormControl>
-        </div>
-        <div className={styles.search_icon}>
-          <Image
-            className={styles.icon}
-            src={'/images/search.webp'}
-            width={25}
-            height={25}
-            alt="instagram"
-          />
-        </div>
-        <div className={styles.right_wrapper}>
-          <div className={styles.info_cell}>
-            <PrimaryButton isGolden>
-              <a href="tel:+14168935540" className={styles.phone_link}>
-                Call Us Now
-              </a>
-            </PrimaryButton>
-          </div>
-          <div className={styles.info_cell}>
-            <PrimaryButton onClick={handleClickOpenRequestModal} isGolden>
-              Free Consultation
-            </PrimaryButton>
-          </div>
-        </div>
+        <PrimaryButton isContrast fullWidth>
+          <a href="tel:+14168935540" className={styles.phone_link}>
+            Call Us Now
+          </a>
+        </PrimaryButton>
+        <PrimaryButton
+          onClick={handleClickOpenRequestModal}
+          isContrast
+          fullWidth
+        >
+          Free Consultation
+        </PrimaryButton>
       </div>
     </div>
   );

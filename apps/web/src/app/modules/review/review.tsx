@@ -27,7 +27,7 @@ export const Review: FC<ReviewPropsType> = ({ reviews }) => {
           sx={{ color: 'red', width: '300px', mt: 1 }}
         />
       </Box>
-      <Box className={styles.reviews_wrapper}>
+      <Box>
         {reviews.length > 0 && (
           <Carousel
             showArrows
@@ -38,11 +38,12 @@ export const Review: FC<ReviewPropsType> = ({ reviews }) => {
             transitionTime={1500}
             autoPlay={true}
             infiniteLoop={true}
+            className={styles.carousel_wrapper}
           >
             {reviews?.map((item: IReview, i) => (
               <Box key={i} className={styles.review_wrapper}>
                 <Box className={styles.review_title_wrapper}>
-                  <Typography className={styles.review_title}>
+                  <Typography>
                     {item.owner}{' '}
                     <span className={styles.source}>from {item.source}</span>
                   </Typography>

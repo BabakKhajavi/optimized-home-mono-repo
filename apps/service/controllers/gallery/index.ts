@@ -26,7 +26,7 @@ router
   .get(async (req: Request, res: Response, next: NextFunction) => {
     try {
       const id = parseInt(req.params.id);
-      const result = await Gallery.findOne({ where: { subcategory_id: id } });
+      const result = await Gallery.findAll({ where: { subcategory_id: id } });
       res.status(SuccessStatusCode.OK).send(result);
     } catch (error) {
       next(error);
@@ -102,14 +102,15 @@ router.route('/').post(
 
 router.route('/:id').put(
   isAuthorized,
-  galleryValidators.updateValidator,
-  validateRequest,
   multipleFileUpload(MediaPath.GALLERY, [
     { name: 'media', maxCount: 1 },
     { name: 'media_thumb', maxCount: 1 },
   ]),
+  galleryValidators.updateValidator,
+  validateRequest,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
+      console.log('req.body', req.body);
       const id = parseInt(req.params.id);
       const files = req.files as { [fieldname: string]: Express.Multer.File[] };
       const mediaFilePath = files?.['media']?.[0]?.path ?? '';

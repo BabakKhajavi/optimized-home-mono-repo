@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const defaultOptions: RequestInit = {
   headers: {
     'Content-Type': 'application/json',
@@ -93,4 +95,9 @@ export const del = async <T>(
     },
     cacheOptions ?? 'no-store',
   );
+};
+
+export const fetchQuery = async (id: string) => {
+  const { data } = await axios.get(`/subcategory/${id}`);
+  return data;
 };
